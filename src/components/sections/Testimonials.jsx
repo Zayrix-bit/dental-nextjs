@@ -1,5 +1,4 @@
-'use client';
-
+import Image from 'next/image';
 import { testimonials } from '@/data/siteData';
 import ScrollReveal from '@/components/ScrollReveal';
 
@@ -24,13 +23,13 @@ export default function Testimonials() {
       <div className="max-w-[1200px] mx-auto px-6">
         <ScrollReveal>
           <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20 flex flex-col items-center">
-            <span className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] font-bold text-[0.7rem] tracking-widest uppercase mb-4 border border-[var(--color-primary)]/20 shadow-sm">
+            <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-bold text-[0.7rem] tracking-widest uppercase mb-4 border border-primary/20 shadow-sm">
               Authentic Reviews
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold text-[var(--color-text-dark)] mb-4 tracking-tight leading-[1.1]">
-              Patient <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)]">Stories.</span>
+            <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold text-text-dark mb-4 tracking-tight leading-[1.1]">
+              Patient <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">Stories.</span>
             </h2>
-            <p className="text-[var(--color-text-light)] text-sm lg:text-base max-w-xl mx-auto leading-relaxed font-medium">
+            <p className="text-text-light text-sm lg:text-base max-w-xl mx-auto leading-relaxed font-medium">
               Don&apos;t just take our word for it. Hear from those who have experienced our care.
             </p>
           </div>
@@ -48,11 +47,15 @@ export default function Testimonials() {
               <div className="flex justify-between items-start mb-4">
                 <div className="flex gap-3 items-center">
                   {userPhotos[t.name] ? (
-                    <img 
-                      src={`https://randomuser.me/api/portraits/${userPhotos[t.name]}`} 
-                      alt={t.name} 
-                      className="w-10 h-10 rounded-full object-cover shrink-0 border border-slate-100" 
-                    />
+                    <div className="relative w-10 h-10 shrink-0">
+                      <Image 
+                        src={`https://randomuser.me/api/portraits/${userPhotos[t.name]}`} 
+                        alt={t.name} 
+                        fill
+                        className="rounded-full object-cover border border-slate-100" 
+                        sizes="40px"
+                      />
+                    </div>
                   ) : (
                     <div className="w-10 h-10 rounded-full bg-[#1A73E8] flex items-center justify-center text-white font-medium text-lg shrink-0">
                       {t.initials}

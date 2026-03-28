@@ -51,7 +51,6 @@ function GalleryCard({ item }) {
     requestAnimationFrame(() => updatePosition(clientX));
   };
 
-  // Global listener to stop drag if mouse leaves the iframe/window
   useEffect(() => {
     const handleMouseUp = () => { dragging.current = false; };
     window.addEventListener('mouseup', handleMouseUp);
@@ -63,7 +62,7 @@ function GalleryCard({ item }) {
   }, []);
 
   return (
-    <div className="flex flex-col bg-white rounded-[1.25rem] lg:rounded-[1.5rem] shadow-sm hover:shadow-2xl hover:shadow-[var(--color-primary)]/10 transition-all duration-500 overflow-hidden group hover:-translate-y-1.5 border border-slate-100/80 w-[75vw] sm:w-[280px] md:w-full snap-center shrink-0 h-full mx-auto md:mx-0 relative">
+    <div className="flex flex-col bg-white rounded-[1.25rem] lg:rounded-[1.5rem] shadow-sm hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 overflow-hidden group hover:-translate-y-1.5 border border-slate-100/80 w-[75vw] sm:w-[280px] md:w-full snap-center shrink-0 h-full mx-auto md:mx-0 relative">
 
       {/* Slider Container */}
       <div
@@ -118,7 +117,7 @@ function GalleryCard({ item }) {
         <div className="absolute top-2.5 left-2.5 md:top-3 md:left-3 z-[4] px-2 py-1 bg-black/50 backdrop-blur-md rounded-full border border-white/10 text-white text-[8px] md:text-[9px] font-bold tracking-widest uppercase shadow-sm transition-opacity duration-300 group-hover:opacity-0 block">
           Before
         </div>
-        <div className="absolute top-2.5 right-2.5 md:top-3 md:right-3 z-[4] px-2 py-1 bg-[var(--color-primary)]/80 backdrop-blur-md rounded-full border border-white/10 text-white text-[8px] md:text-[9px] font-bold tracking-widest uppercase shadow-sm transition-opacity duration-300 group-hover:opacity-0 block">
+        <div className="absolute top-2.5 right-2.5 md:top-3 md:right-3 z-[4] px-2 py-1 bg-primary/80 backdrop-blur-md rounded-full border border-white/10 text-white text-[8px] md:text-[9px] font-bold tracking-widest uppercase shadow-sm transition-opacity duration-300 group-hover:opacity-0 block">
           After
         </div>
       </div>
@@ -141,7 +140,7 @@ function GalleryCard({ item }) {
             <span className="text-[9px] md:text-[10px] font-bold text-slate-400 tracking-widest uppercase">Verified</span>
           </div>
           
-          <h3 className="text-base md:text-lg lg:text-xl font-bold text-[var(--color-text-dark)] mb-2 leading-tight group-hover:text-[var(--color-primary)] transition-colors duration-300">
+          <h3 className="text-base md:text-lg lg:text-xl font-bold text-text-dark mb-2 leading-tight group-hover:text-primary transition-colors duration-300">
              {item.category}
           </h3>
           
@@ -150,7 +149,7 @@ function GalleryCard({ item }) {
           </p>
         </div>
         
-        <Link href={item.href || '/services'} className="inline-flex items-center gap-1.5 text-[var(--color-primary)] text-[10px] md:text-[11px] font-bold tracking-wider uppercase group-hover:gap-2 transition-all mt-auto w-fit">
+        <Link href={item.href || '/services'} className="inline-flex items-center gap-1.5 text-primary text-[10px] md:text-[11px] font-bold tracking-wider uppercase group-hover:gap-2 transition-all mt-auto w-fit">
           View Details <ArrowRight className="w-3.5 h-3.5" />
         </Link>
       </div>
@@ -163,17 +162,17 @@ export default function BeforeAfter() {
   return (
     <section id="gallery" className="py-10 md:py-16 bg-zinc-50 overflow-hidden relative">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--color-primary)]/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[var(--color-accent)]/5 rounded-full blur-[80px] pointer-events-none translate-y-1/2 -translate-x-1/3"></div>
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-accent/5 rounded-full blur-[80px] pointer-events-none translate-y-1/2 -translate-x-1/3"></div>
 
       <div className="max-w-[1200px] mx-auto relative z-10 w-full">
         <ScrollReveal>
           <div className="text-center max-w-2xl mx-auto mb-8 md:mb-12 px-4">
-            <div className="inline-flex items-center gap-2 bg-white text-[var(--color-primary)] px-3 py-1.5 rounded-full text-[9px] md:text-[10px] font-bold tracking-widest uppercase mb-4 border border-slate-100 shadow-sm">
+            <div className="inline-flex items-center gap-2 bg-white text-primary px-3 py-1.5 rounded-full text-[9px] md:text-[10px] font-bold tracking-widest uppercase mb-4 border border-slate-100 shadow-sm">
                Real Transformations
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-black text-[var(--color-text-dark)] mb-3 md:mb-4 leading-tight tracking-tight">
-              Life-Changing <span className="text-[var(--color-primary)] italic font-medium">Smiles.</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-black text-text-dark mb-3 md:mb-4 leading-tight tracking-tight">
+              Life-Changing <span className="text-primary italic font-medium">Smiles.</span>
             </h2>
             <p className="text-slate-500 text-[0.85rem] md:text-base leading-relaxed max-w-[450px] mx-auto">
               Explore our gallery of actual patient results. Transparency and excellence, showcased side-by-side.

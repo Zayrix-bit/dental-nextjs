@@ -5,7 +5,7 @@ import AnimatedCounter from '@/components/ui/AnimatedCounter';
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-[75svh] lg:min-h-[85svh] flex items-center overflow-hidden bg-gradient-to-br from-[#1a3a4a] via-[#0d2733] to-[#1a3a4a]">
+    <section id="home" className="relative min-h-[75svh] lg:min-h-[85svh] flex items-center overflow-hidden bg-linear-to-br from-[#1a3a4a] via-[#0d2733] to-[#1a3a4a]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -13,26 +13,27 @@ export default function Hero() {
           alt="Modern dental clinic interior"
           fill
           className="object-cover opacity-35"
-          priority
+          priority={true}
           sizes="100vw"
+          quality={85}
         />
       </div>
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-br from-[rgba(13,39,51,0.85)] via-[rgba(26,58,74,0.7)] to-[rgba(79,195,247,0.2)]" />
+      <div className="absolute inset-0 z-[1] bg-linear-to-br from-[rgba(13,39,51,0.85)] via-[rgba(26,58,74,0.7)] to-[rgba(79,195,247,0.2)]" />
 
       {/* Content */}
       <div className="relative z-[2] max-w-[1200px] mx-auto px-6 w-full">
         <div className="max-w-[700px] py-16 md:py-24 mt-8 md:mt-0">
           {/* Badge */}
-          <div className="inline-flex items-center gap-1.5 bg-[rgba(79,195,247,0.15)] border border-[rgba(79,195,247,0.3)] px-4 py-1.5 rounded-full text-[0.75rem] font-medium text-[var(--color-accent)] mb-4 backdrop-blur-[10px] shadow-sm">
+          <div className="inline-flex items-center gap-1.5 bg-accent/15 border border-accent/30 px-4 py-1.5 rounded-full text-[0.75rem] font-medium text-accent mb-4 backdrop-blur-[10px] shadow-sm">
             <Sparkles className="w-3.5 h-3.5" /> Premium Dental Care
           </div>
 
           {/* Heading */}
           <h1 className="text-4xl md:text-5xl lg:text-[4rem] font-extrabold text-white mb-5 lg:mb-6 leading-[1.05] tracking-tighter">
             Premium Dental Care <br className="hidden sm:block" />
-            in <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent)] to-[#38BDF8]">New York.</span>
+            in <span className="text-transparent bg-clip-text bg-linear-to-r from-accent to-[#38BDF8]">New York.</span>
           </h1>
 
           {/* Subtitle */}
@@ -59,11 +60,13 @@ export default function Hero() {
           </div>
 
           {/* Stats */}
-          <div className="flex flex-wrap gap-6 md:gap-10 mt-10 pt-6 border-t border-white/10">
+          <div className="grid grid-cols-4 md:flex md:flex-wrap gap-2 sm:gap-4 md:gap-10 mt-10 pt-6 border-t border-white/10 w-full overflow-hidden">
             {heroStats.map((stat) => (
-              <div key={stat.label} className="text-center">
+              <div key={stat.label} className="text-center md:text-left">
                 <AnimatedCounter target={stat.number} suffix={stat.suffix} />
-                <span className="text-[0.7rem] md:text-[0.8rem] text-white/70 mt-0.5 block">{stat.label}</span>
+                <span className="text-[0.6rem] sm:text-[0.7rem] md:text-[0.8rem] text-white/70 mt-0.5 block leading-tight">
+                  {stat.label}
+                </span>
               </div>
             ))}
           </div>

@@ -224,7 +224,7 @@ export const services = [
       "Our practice utilizes advanced 3D imaging and surgical planning software to ensure precise and minimally invasive implant placement. From single tooth replacements to full arch restorations (All-on-4), we offer comprehensive implant solutions.",
       "Implants look, feel, and function just like natural teeth. With proper care, they are designed to last a lifetime, giving you the freedom to eat, speak, and smile with absolute confidence."
     ],
-    isHighlighted: true,
+    isHighlighted: false,
     tags: ['Permanent Solution', 'Advanced Tech', 'All-on-4'],
     benefits: [
       'Permanent replacement for missing teeth',

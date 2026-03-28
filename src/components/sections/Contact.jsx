@@ -28,7 +28,7 @@ const CONTACT_METHODS = [
     label: "WhatsApp",
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-[18px] h-[18px]">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347" />
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .006 5.408 0 12.045c0 2.12.554 4.189 1.605 6.006L0 24l6.117-1.605A11.803 11.803 0 0012.05 24c6.604 0 12.003-5.402 12.006-12.007a11.93 11.93 0 00-3.614-8.471" />
       </svg>
     ),
   },
@@ -55,9 +55,9 @@ function Field({ label, htmlFor, required, optional, error, children }) {
   const LabelTag = htmlFor ? 'label' : 'div';
   return (
     <div className="flex flex-col gap-1">
-      <LabelTag {...(htmlFor ? { htmlFor } : {})} className="text-xs font-semibold text-[var(--color-text-dark)] mb-0.5 block">
+      <LabelTag {...(htmlFor ? { htmlFor } : {})} className="text-xs font-semibold text-text-dark mb-0.5 block">
         {label}
-        {required && <span className="text-[var(--color-accent)] ml-0.5">*</span>}
+        {required && <span className="text-accent ml-0.5">*</span>}
         {optional && <span className="text-gray-400 font-normal ml-1">(optional)</span>}
       </LabelTag>
       {children}
@@ -197,22 +197,22 @@ export default function Contact({ className = "" }) {
   /* ── Success State ── */
   if (submitted) {
     return (
-      <section id="appointment" className="py-10 lg:py-16 bg-[var(--color-bg-section)] px-4">
+      <section id="appointment" className="py-10 lg:py-16 bg-bg-section px-4">
         <div className={`max-w-md mx-auto bg-white rounded-2xl lg:rounded-3xl shadow-md border border-slate-100 p-8 lg:p-10 flex flex-col items-center text-center animate-[fadeInUp_0.4s_ease] ${className}`}>
           {/* Icon */}
           <div className="w-14 h-14 rounded-full bg-emerald-50 border-2 border-emerald-200 flex items-center justify-center mb-5 text-emerald-500">
             <CheckCircleIcon />
           </div>
-          <h3 className="text-xl lg:text-2xl font-extrabold text-[var(--color-text-dark)] mb-2 tracking-tight">
+          <h3 className="text-xl lg:text-2xl font-extrabold text-text-dark mb-2 tracking-tight">
             Appointment Request Sent!
           </h3>
-          <p className="text-[14px] text-[var(--color-text-light)] leading-relaxed mb-6">
-            Thank you, <strong className="text-[var(--color-primary-dark)] font-semibold">{form.name}</strong>. We&apos;ll contact you via{" "}
-            <strong className="text-[var(--color-primary-dark)] font-semibold capitalize">{form.contactMethod}</strong> within 24 hours to confirm.
+          <p className="text-[14px] text-text-light leading-relaxed mb-6">
+            Thank you, <strong className="text-primary-dark font-semibold">{form.name}</strong>. We&apos;ll contact you via{" "}
+            <strong className="text-primary-dark font-semibold capitalize">{form.contactMethod}</strong> within 24 hours to confirm.
           </p>
           <button
             onClick={resetForm}
-            className="bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white font-semibold text-xs tracking-wide uppercase px-6 py-3 rounded-lg transition-all duration-200 shadow-sm cursor-pointer"
+            className="bg-primary hover:bg-primary-dark text-white font-semibold text-xs tracking-wide uppercase px-6 py-3 rounded-lg transition-all duration-200 shadow-sm cursor-pointer"
           >
             Book Another Appointment
           </button>
@@ -223,13 +223,13 @@ export default function Contact({ className = "" }) {
 
   /* ── Main Form ── */
   return (
-    <section id="appointment" className="py-10 lg:py-16 bg-[var(--color-bg-section)] px-4 overflow-hidden">
+    <section id="appointment" className="py-10 lg:py-16 bg-bg-section px-4 overflow-hidden">
       {/* Section Header */}
       <div className="text-center mb-8 lg:mb-10">
-        <span className="inline-block text-[10px] font-semibold tracking-widest uppercase text-[var(--color-accent)] mb-2">
+        <span className="inline-block text-[10px] font-semibold tracking-widest uppercase text-accent mb-2">
           Schedule a Visit
         </span>
-        <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold text-[var(--color-text-dark)] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold text-text-dark tracking-tight">
           Book Your Appointment
         </h2>
       </div>
@@ -238,9 +238,9 @@ export default function Contact({ className = "" }) {
       <div className={`max-w-[900px] mx-auto grid grid-cols-1 lg:grid-cols-[280px_1fr] bg-white rounded-2xl lg:rounded-3xl overflow-hidden shadow-sm hover:shadow-md border border-slate-100 transition-shadow duration-300 ${className}`}>
 
         {/* ── Left Panel ── */}
-        <aside className="relative bg-gradient-to-br from-[var(--color-primary)] to-[#0A3A5C] p-6 lg:p-8 flex flex-col overflow-hidden">
+        <aside className="relative bg-linear-to-br from-primary to-[#0A3A5C] p-6 lg:p-8 flex flex-col overflow-hidden">
           {/* Decorative blurs */}
-          <div className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-[var(--color-accent)] opacity-20 blur-[30px] pointer-events-none" />
+          <div className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-accent opacity-20 blur-[30px] pointer-events-none" />
           <div className="absolute -top-8 -left-8 w-24 h-24 rounded-full bg-white opacity-10 blur-[20px] pointer-events-none" />
 
           {/* Content */}
@@ -248,7 +248,7 @@ export default function Contact({ className = "" }) {
             Book Your Visit
           </span>
           <h3 className="relative z-10 text-xl lg:text-[22px] font-bold text-white leading-tight mb-2">
-            Your <em className="italic text-[var(--color-accent)]">Perfect Smile</em> Starts Here
+            Your <em className="italic text-accent">Perfect Smile</em> Starts Here
           </h3>
           <p className="relative z-10 text-[12px] lg:text-[13px] text-white/80 leading-snug mb-6 lg:mb-8">
             Schedule your appointment in minutes. Our team will confirm within 24 hours.
@@ -296,7 +296,7 @@ export default function Contact({ className = "" }) {
             className="relative z-10 flex items-center justify-center gap-2 mt-8 lg:mt-10 bg-[#25D366] hover:bg-[#20ba56] text-white text-[12px] lg:text-[13px] font-bold py-2.5 px-4 rounded-lg transition-all duration-200 border border-transparent shadow-sm hover:shadow-md"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347" />
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .006 5.408 0 12.045c0 2.12.554 4.189 1.605 6.006L0 24l6.117-1.605A11.803 11.803 0 0012.05 24c6.604 0 12.003-5.402 12.006-12.007a11.93 11.93 0 00-3.614-8.471" />
             </svg>
             Chat on WhatsApp
           </a>
@@ -423,8 +423,8 @@ export default function Contact({ className = "" }) {
                   key={m.id}
                   className={`flex-1 flex flex-col justify-center items-center gap-1.5 py-2.5 px-2 rounded-lg border-[1.5px] cursor-pointer transition-all duration-200 text-[11px] lg:text-[12px] font-semibold select-none text-center
                     ${form.contactMethod === m.id
-                      ? "border-[var(--color-accent)] bg-[rgba(79,195,247,0.05)] text-[var(--color-primary-dark)]"
-                      : "border-transparent bg-[#F8FAFC] text-[var(--color-text-light)] hover:border-[rgba(79,195,247,0.3)]"
+                      ? "border-accent bg-[rgba(79,195,247,0.05)] text-primary-dark"
+                      : "border-transparent bg-bg-section text-text-light hover:border-[rgba(79,195,247,0.3)]"
                     }`}
                 >
                   <input
@@ -435,7 +435,7 @@ export default function Contact({ className = "" }) {
                     onChange={handleChange}
                     className="sr-only"
                   />
-                  <span className={`transition-colors duration-200 ${form.contactMethod === m.id ? "text-[var(--color-accent)]" : "text-gray-400"}`}>
+                  <span className={`transition-colors duration-200 ${form.contactMethod === m.id ? "text-accent" : "text-gray-400"}`}>
                     {m.icon}
                   </span>
                   {m.label}
@@ -475,7 +475,7 @@ export default function Contact({ className = "" }) {
               type="submit"
               disabled={loading}
               suppressHydrationWarning
-              className="inline-flex items-center justify-center gap-2 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] disabled:opacity-70 disabled:cursor-not-allowed disabled:translate-y-0 text-white text-[13px] lg:text-[14px] font-semibold py-2.5 lg:py-3 px-6 rounded-lg transition-all duration-200 hover:-translate-y-0.5 shadow-sm border border-transparent cursor-pointer whitespace-nowrap"
+              className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark disabled:opacity-70 disabled:cursor-not-allowed disabled:translate-y-0 text-white text-[13px] lg:text-[14px] font-semibold py-2.5 lg:py-3 px-6 rounded-lg transition-all duration-200 hover:-translate-y-0.5 shadow-sm border border-transparent cursor-pointer whitespace-nowrap"
             >
               {loading ? (
                 <>
