@@ -166,12 +166,13 @@ export default function ExtendedContact({ className = "" }) {
 
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
+        console.error("API Error Data:", data);
         throw new Error(data?.error || data?.message || "Failed to send email");
       }
 
       setSubmitted(true);
     } catch (err) {
-      console.error("Submission Error:", err);
+      console.error("Submission Error Details:", err);
       setApiError(err.message || "Unable to submit appointment. Please try again.");
     } finally {
       setLoading(false);
