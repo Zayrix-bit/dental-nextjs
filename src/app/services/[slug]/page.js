@@ -80,44 +80,46 @@ export default function TreatmentPage({ params }) {
 
         {/* HERO SECTION */}
         <section className="max-w-[1200px] mx-auto px-4 md:px-6 mb-16 lg:mb-24">
-          <div className="relative rounded-[2rem] lg:rounded-[3rem] overflow-hidden bg-[var(--color-primary)] shadow-2xl flex flex-col md:flex-row min-h-[500px] lg:min-h-[600px]">
-            {/* Image Side (Mobile Top, Desktop Right) */}
-            <div className="relative w-full md:w-1/2 md:max-w-[50%] aspect-square md:aspect-auto h-[380px] md:h-full order-1 md:order-2">
-              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-primary)]/50 to-transparent z-10 w-full md:w-[25%] h-[40%] md:h-full bottom-0 md:bottom-auto"></div>
+          <div className="relative rounded-[20px] lg:rounded-[3rem] overflow-hidden bg-primary shadow-2xl flex flex-col md:flex-row min-h-0 md:min-h-[460px] lg:min-h-[540px] items-stretch">
+            
+            {/* Image Side (Shows at Top on Mobile, Right on Desktop) */}
+            <div className="relative w-full md:w-1/2 h-[220px] md:h-auto md:min-h-full order-1 md:order-2 overflow-hidden bg-slate-900/10">
+              <div className="hidden md:block absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-primary via-primary/50 to-transparent z-10 w-full md:w-[40%] h-1/2 md:h-full bottom-0 md:bottom-auto pointer-events-none"></div>
               <Image 
                 src={service.image} 
                 alt={service.title}
                 fill
-                className="object-cover"
+                className="object-cover z-0"
                 priority
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
 
-            {/* Content Side */}
-            <div className="relative w-full md:w-1/2 p-8 md:p-12 lg:p-16 xl:p-20 flex flex-col justify-center order-2 md:order-1 z-20 bg-[var(--color-primary)] md:bg-transparent -mt-12 md:mt-0 rounded-[2rem] md:rounded-none">
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-emerald-300 px-3 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase shadow-sm mb-6 w-fit">
-                <service.icon className="w-4 h-4" />
+            {/* Content Side (Always First on Mobile for UX, First on Desktop for Layout) */}
+            <div className="relative w-full md:w-1/2 px-6 py-10 md:p-10 lg:p-14 xl:p-16 flex flex-col justify-center z-20 order-2 md:order-1">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-emerald-300 px-3 py-1.5 rounded-full text-[10px] font-bold tracking-wide uppercase shadow-sm mb-6 w-fit">
+                <service.icon className="w-3.5 h-3.5" />
                 Premium Care
               </div>
               
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
+              <h1 className="text-[1.75rem] sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-5 leading-[1.2] tracking-tight">
                 {service.title}
               </h1>
               
-              <p className="text-blue-50 text-base lg:text-lg leading-relaxed mb-8 max-w-xl opacity-90">
+              <p className="text-blue-50/90 text-sm lg:text-base xl:text-lg leading-relaxed mb-8 max-w-xl">
                 {service.description}
               </p>
               
-              <div className="flex flex-col xl:flex-row gap-4">
-                <Link href="/contact" className="bg-white text-[var(--color-primary)] px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-slate-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 shrink-0">
-                  Book Consultation <ArrowRight className="w-5 h-5" />
+              <div className="flex flex-col sm:flex-row gap-3 mt-2">
+                <Link href="/contact" className="bg-white text-primary px-8 py-3.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 hover:bg-slate-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 shrink-0">
+                  Book Consultation <ArrowRight className="w-4 h-4" />
                 </Link>
-                <a href="tel:+15551234567" className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-white/20 transition-all shrink-0">
-                  <PhoneCall className="w-5 h-5" /> Call Now
+                <a href="tel:+15551234567" className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-3.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 hover:bg-white/20 transition-all shrink-0">
+                  <PhoneCall className="w-4 h-4" /> Call Now
                 </a>
               </div>
             </div>
+
           </div>
         </section>
 

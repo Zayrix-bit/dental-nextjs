@@ -32,7 +32,7 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-2 max-w-[1200px] mx-auto px-6 w-full">
         <div className="max-w-[700px] py-16 md:py-24 mt-8 md:mt-0">
-          
+
           {/* Trust Badge & Avatars */}
           <div className="flex flex-wrap items-center gap-4 mb-6 lg:mb-8 animate-[fadeInUp_0.6s_ease]">
             {/* Badge */}
@@ -62,8 +62,7 @@ export default function Hero() {
 
           {/* Heading */}
           <h1 className="text-4xl md:text-6xl lg:text-[4.5rem] font-bold text-white mb-6 leading-[1.1] tracking-tight">
-            Signature Smiles, <br className="hidden sm:block" />
-            <span className="text-accent underline decoration-accent/30 decoration-offset-8">Tailored Excellence.</span>
+            Advanced Dental Excellence
           </h1>
 
           {/* Subtitle */}

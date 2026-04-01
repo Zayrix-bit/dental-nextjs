@@ -137,6 +137,9 @@ export default function Header() {
   const [scrolled, setScrolled]   = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const isHomePage = pathname === '/';
+  // Force "scrolled" state on sub-pages so header is visible on light backgrounds
+  const effectiveScrolled = scrolled || !isHomePage;
 
   useEffect(() => {
     const onScroll = () => {
@@ -164,7 +167,7 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 border-b ${
-        scrolled 
+        effectiveScrolled 
           ? 'header-glass shadow-[0_4px_20px_rgba(0,0,0,0.06)] py-1.5 border-white/10' 
           : 'py-2.5 lg:py-4 border-transparent'
       }`}
@@ -176,7 +179,7 @@ export default function Header() {
           href="/"
           onClick={closeMobile}
           className={`relative z-[1001] flex items-center gap-2.5 text-xl lg:text-2xl font-black transition-all duration-300 ${
-            (scrolled && !mobileOpen) ? 'text-text-dark scale-95' : 'text-white'
+            (effectiveScrolled && !mobileOpen) ? 'text-text-dark scale-95' : 'text-white'
           }`}
           aria-label={`${siteInfo.name} Home`}
         >
@@ -190,7 +193,7 @@ export default function Header() {
         <nav className="hidden md:flex items-center gap-5 lg:gap-8">
           {navLinks.filter(l => l.label !== 'Testimonials').map((link) => {
             if (link.label === 'Services') {
-              return <ServicesDropdown key={link.href} scrolled={scrolled} />;
+              return <ServicesDropdown key={link.href} scrolled={effectiveScrolled} />;
             }
             return (
               <Link
@@ -199,7 +202,7 @@ export default function Header() {
                 onClick={closeMobile}
                 aria-current={pathname === link.href ? 'page' : undefined}
                 className={`text-[0.85rem] lg:text-[0.92rem] font-semibold relative py-1 transition-colors duration-300 hover:after:w-full after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-accent after:transition-all after:duration-300 ${
-                  pathname === link.href ? 'text-accent after:w-full' : (scrolled ? 'text-text-light hover:text-accent' : 'text-white/85 hover:text-white')
+                  pathname === link.href ? 'text-accent after:w-full' : (effectiveScrolled ? 'text-text-light hover:text-accent' : 'text-white/85 hover:text-white')
                 }`}
               >
                 {link.label}
@@ -211,12 +214,12 @@ export default function Header() {
           <a 
             href={`tel:${siteInfo.phoneRaw}`} 
             className={`hidden lg:flex items-center gap-2.5 text-[0.88rem] font-bold transition-all duration-300 ${
-              scrolled ? 'text-rose-600 hover:text-rose-700' : 'text-white hover:text-rose-400'
+              effectiveScrolled ? 'text-rose-600 hover:text-rose-700' : 'text-white hover:text-rose-400'
             }`}
             aria-label={`Call us at ${siteInfo.phone}`}
           >
             <div className={`p-1.5 rounded-full transition-colors duration-300 border ${
-              scrolled ? 'bg-rose-50 border-rose-100 text-rose-600' : 'bg-white/10 border-white/10 text-white'
+              effectiveScrolled ? 'bg-rose-50 border-rose-100 text-rose-600' : 'bg-white/10 border-white/10 text-white'
             }`}>
               <Phone className="w-3.5 h-3.5" strokeWidth={2.5} />
             </div>
@@ -236,7 +239,7 @@ export default function Header() {
         <button
           onClick={toggleMobile}
           className={`flex md:hidden flex-col gap-[5px] cursor-pointer z-[1001] bg-transparent border-none p-2 rounded-lg transition-colors duration-300 ${
-            scrolled && !mobileOpen ? 'hover:bg-slate-100' : 'hover:bg-white/5'
+            effectiveScrolled && !mobileOpen ? 'hover:bg-slate-100' : 'hover:bg-white/5'
           } ${mobileOpen ? 'hamburger-active' : ''}`}
           aria-label="Toggle navigation menu"
           aria-expanded={mobileOpen}
@@ -245,7 +248,7 @@ export default function Header() {
             <span
               key={i}
               className={`block w-[24px] h-[2.5px] rounded-[3px] transition-all duration-300 ${
-                (scrolled && !mobileOpen) ? 'bg-text-dark' : 'bg-white'
+                (effectiveScrolled && !mobileOpen) ? 'bg-text-dark' : 'bg-white'
               }`}
             />
           ))}
