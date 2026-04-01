@@ -51,6 +51,7 @@ export default function Testimonials() {
                         fill
                         className="rounded-full object-cover border border-slate-100" 
                         sizes="40px"
+                        quality={75}
                       />
                     </div>
                   ) : (

@@ -22,7 +22,7 @@ export default function Hero() {
           className="object-cover opacity-35"
           priority={true}
           sizes="100vw"
-          quality={85}
+          quality={75}
         />
       </div>
 
@@ -45,7 +45,7 @@ export default function Hero() {
               <div className="flex -space-x-2">
                 {TRUST_AVATARS.map((src, i) => (
                   <div key={i} className="relative w-6 h-6 rounded-full border-2 border-[#0d2733] overflow-hidden">
-                    <Image src={src} alt="Patient Avatar" fill className="object-cover" />
+                    <Image src={src} alt="Patient Avatar" fill className="object-cover" quality={75} sizes="24px" />
                   </div>
                 ))}
               </div>

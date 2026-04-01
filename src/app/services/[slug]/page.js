@@ -90,8 +90,8 @@ export default function TreatmentPage({ params }) {
                 alt={service.title}
                 fill
                 className="object-cover z-0"
-                priority
                 sizes="(max-width: 768px) 100vw, 50vw"
+                quality={75}
               />
             </div>
 
@@ -276,7 +276,7 @@ export default function TreatmentPage({ params }) {
                       <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10"></div>
                       <div className="aspect-[4/3] relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0A3A5C]/60 via-transparent to-transparent z-10 opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
-                        <Image src={rel.image} alt={rel.title} fill className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                        <Image src={rel.image} alt={rel.title} fill className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" quality={75} />
                         <div className="absolute bottom-4 left-4 z-20 w-10 h-10 bg-[var(--color-primary)] text-white rounded-xl flex items-center justify-center shadow-lg group-hover:-translate-y-1 transition-transform duration-300">
                           <rel.icon className="w-5 h-5" />
                         </div>

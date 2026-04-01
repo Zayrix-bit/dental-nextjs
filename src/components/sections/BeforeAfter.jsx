@@ -107,6 +107,7 @@ function GalleryCard({ item, onInteractionStart, onInteractionEnd }) {
             fill
             className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-[1.05]"
             sizes="(max-width: 768px) 100vw, 350px"
+            quality={75}
           />
         </div>
 
@@ -118,6 +119,7 @@ function GalleryCard({ item, onInteractionStart, onInteractionEnd }) {
             fill
             className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-[1.05]"
             sizes="(max-width: 768px) 100vw, 350px"
+            quality={75}
           />
         </div>
 
