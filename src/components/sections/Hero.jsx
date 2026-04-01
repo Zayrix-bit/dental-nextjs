@@ -78,7 +78,7 @@ export default function Hero() {
               <a
                 href="#appointment"
                 aria-label="Book your dental appointment"
-                className="btn-primary px-8 py-4 rounded-full font-bold text-sm inline-flex items-center justify-center gap-2 shadow-sm transition-all hover:scale-[1.02] hover:-translate-y-0.5"
+                className="btn-primary px-8 py-4 rounded-full font-bold text-sm inline-flex items-center justify-center gap-2 shadow-sm transition-all hover:scale-[1.02] hover:-translate-y-0.5 animate-whatsapp-giggle"
               >
                 Book Appointment
               </a>
