@@ -18,7 +18,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const service = services.find((s) => s.slug === params.slug);
+  const { slug } = await params;
+  const service = services.find((s) => s.slug === slug);
   if (!service) return { title: 'Treatment Not Found' };
   
   return {
@@ -30,8 +31,9 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function TreatmentPage({ params }) {
-  const service = services.find((s) => s.slug === params.slug);
+export default async function TreatmentPage({ params }) {
+  const { slug } = await params;
+  const service = services.find((s) => s.slug === slug);
   
   if (!service) {
     notFound();

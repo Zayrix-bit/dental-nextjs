@@ -25,6 +25,7 @@
     "resend": "^6.9.4"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^16.2.2",
     "@tailwindcss/postcss": "^4.0.0",
     "concurrently": "^9.2.1",
     "eslint": "^9.39.4",
