@@ -134,22 +134,21 @@ function MobileServicesAccordion({ onClose }) {
 }
 
 export default function Header() {
-  const [scrolled, setScrolled]   = useState(false);
+  const [scrolled, setScrolled]   = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === '/';
   // Force "scrolled" state on sub-pages so header is visible on light backgrounds
   const effectiveScrolled = scrolled || !isHomePage;
 
   useEffect(() => {
+    setMounted(true);
     const onScroll = () => {
-      // Adjusted scroll trigger for better mobile feel
       setScrolled(window.scrollY > 20);
     };
 
-    // Initialize state immediately to prevent "invisible on refresh" bug
     onScroll();
-
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -167,7 +166,7 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 border-b ${
-        effectiveScrolled 
+        (mounted ? effectiveScrolled : true) 
           ? 'header-glass shadow-[0_4px_20px_rgba(0,0,0,0.06)] py-1.5 border-white/10' 
           : 'py-2.5 lg:py-4 border-transparent'
       }`}

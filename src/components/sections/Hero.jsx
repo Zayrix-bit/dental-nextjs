@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Sparkles, Star } from 'lucide-react';
 import { heroStats } from '@/data/siteData';
 import AnimatedCounter from '@/components/ui/AnimatedCounter';
+import ScrollReveal from '@/components/ScrollReveal';
 
 const TRUST_AVATARS = [
   'https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&q=80&w=100&h=100',
@@ -61,32 +62,38 @@ export default function Hero() {
           </div>
 
           {/* Heading */}
-          <h1 className="text-4xl md:text-6xl lg:text-[4.5rem] font-bold text-white mb-6 leading-[1.1] tracking-tight">
-            Advanced Dental Excellence
-          </h1>
+          <ScrollReveal>
+            <h1 className="text-4xl md:text-6xl lg:text-[4.5rem] font-bold text-white mb-6 leading-[1.1] tracking-tight">
+              Advanced Dental Excellence
+            </h1>
+          </ScrollReveal>
 
           {/* Subtitle */}
-          <p className="text-white/85 text-base md:text-lg lg:text-[1.1rem] mb-8 lg:mb-10 max-w-[560px] leading-relaxed font-light">
-            Experience the perfect synthesis of advanced technology and compassionate care. We design smiles that inspire confidence and promote lifelong health.
-          </p>
+          <ScrollReveal delay={100}>
+            <p className="text-white/85 text-base md:text-lg lg:text-[1.1rem] mb-8 lg:mb-10 max-w-[560px] leading-relaxed font-light">
+              Experience the perfect synthesis of advanced technology and compassionate care. We design smiles that inspire confidence and promote lifelong health.
+            </p>
+          </ScrollReveal>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3">
-            <a
-              href="#appointment"
-              aria-label="Book your dental appointment"
-              className="btn-primary px-8 py-4 rounded-full font-bold text-sm inline-flex items-center justify-center gap-2 shadow-sm transition-all hover:scale-[1.02] hover:-translate-y-0.5"
-            >
-              Book Appointment
-            </a>
-            <a
-              href="#services"
-              aria-label="Explore our dental services"
-              className="btn-outline-hero px-8 py-4 rounded-full font-bold text-sm inline-flex items-center justify-center gap-2 transition-all hover:scale-[1.02] hover:-translate-y-0.5"
-            >
-              Explore Services
-            </a>
-          </div>
+          <ScrollReveal delay={200}>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href="#appointment"
+                aria-label="Book your dental appointment"
+                className="btn-primary px-8 py-4 rounded-full font-bold text-sm inline-flex items-center justify-center gap-2 shadow-sm transition-all hover:scale-[1.02] hover:-translate-y-0.5"
+              >
+                Book Appointment
+              </a>
+              <a
+                href="#services"
+                aria-label="Explore our dental services"
+                className="btn-outline-hero px-8 py-4 rounded-full font-bold text-sm inline-flex items-center justify-center gap-2 transition-all hover:scale-[1.02] hover:-translate-y-0.5"
+              >
+                Explore Services
+              </a>
+            </div>
+          </ScrollReveal>
 
           {/* Stats */}
           <div className="grid grid-cols-4 md:flex md:flex-wrap gap-2 sm:gap-4 md:gap-10 mt-12 pt-8 border-t border-white/10 w-full overflow-hidden">

@@ -30,6 +30,7 @@ export default function Services({ isHomePage = false }) {
           {[...services].sort((a, b) => (b.isHighlighted ? 1 : 0) - (a.isHighlighted ? 1 : 0)).map((service, idx) => (
             <ScrollReveal 
               key={service.id || service.slug || service.title} 
+              delay={(idx % 4) * 80}
               className={`h-full ${isHomePage && idx >= 6 ? 'hidden md:block' : ''}`}
             >
               <Link href={`/services/${service.slug}`} className="block h-full outline-none">

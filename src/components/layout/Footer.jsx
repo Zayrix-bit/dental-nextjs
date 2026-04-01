@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { siteInfo, footerQuickLinks, services } from '@/data/siteData';
 import Link from 'next/link';
+import ScrollReveal from '@/components/ScrollReveal';
 
 const FacebookIcon = ({ className }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -67,8 +68,8 @@ export default function Footer() {
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
           
-          {/* Brand Column (lg:col-span-4) */}
-          <div className="lg:col-span-4">
+          {/* Brand Column */}
+          <ScrollReveal className="lg:col-span-4">
             <Link href="/" className="flex items-center gap-3 text-2xl font-bold text-white mb-8 group inline-flex">
               <div className="w-10 h-10 bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-primary)] rounded-full flex items-center justify-center relative overflow-hidden shrink-0">
                 <Activity className="w-6 h-6 text-white relative z-10" strokeWidth={2} />
@@ -91,10 +92,10 @@ export default function Footer() {
                 <TwitterIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
               </a>
             </div>
-          </div>
+          </ScrollReveal>
 
-          {/* Navigation (lg:col-span-2) */}
-          <div className="lg:col-span-2 lg:col-start-6">
+          {/* Navigation */}
+          <ScrollReveal delay={100} className="lg:col-span-2 lg:col-start-6">
             <h4 className="text-white text-sm font-semibold mb-6 tracking-wide uppercase mt-2">Explore</h4>
             <ul className="space-y-4">
               {footerQuickLinks.map((link) => (
@@ -111,10 +112,10 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </ScrollReveal>
 
-          {/* Services (lg:col-span-2) */}
-          <div className="lg:col-span-2">
+          {/* Services */}
+          <ScrollReveal delay={200} className="lg:col-span-2">
             <h4 className="text-white text-sm font-semibold mb-6 tracking-wide uppercase mt-2">Services</h4>
             <ul className="space-y-4">
               {services.slice(0, 5).map((s) => (
@@ -131,10 +132,10 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </ScrollReveal>
 
-          {/* Contact (lg:col-span-3) */}
-          <div className="lg:col-span-3">
+          {/* Contact */}
+          <ScrollReveal delay={300} className="lg:col-span-3">
             <h4 className="text-white text-sm font-semibold mb-6 tracking-wide uppercase mt-2">Connect</h4>
             <ul className="space-y-5">
               <li>
@@ -177,7 +178,7 @@ export default function Footer() {
                 {siteInfo.hours.emergency}
               </p>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
 

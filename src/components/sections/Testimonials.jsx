@@ -33,8 +33,9 @@ export default function Testimonials() {
         </ScrollReveal>
 
         {/* Infinite Scroll Carousel */}
-        <div className="relative pt-8 pb-12 overflow-hidden -mx-6 px-6 md:mx-0 md:px-0 mt-4 group mask-edges">
-          <div className="flex gap-6 w-max animate-infinite-scroll group-hover:[animation-play-state:paused]">
+        <ScrollReveal delay={150}>
+          <div className="relative pt-8 pb-12 overflow-hidden -mx-6 px-6 md:mx-0 md:px-0 mt-4 group mask-edges">
+            <div className="flex gap-6 w-max animate-infinite-scroll group-hover:[animation-play-state:paused]">
             {[...testimonials, ...testimonials].map((t, idx) => (
             <div
               key={`${t.name}-${idx}`}
@@ -97,7 +98,8 @@ export default function Testimonials() {
           ))}
           </div>
         </div>
-      </div>
-    </section>
+      </ScrollReveal>
+    </div>
+  </section>
   );
 }
