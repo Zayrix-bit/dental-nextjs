@@ -2,6 +2,7 @@ import { siteInfo } from '@/data/siteData';
 import { Roboto } from 'next/font/google';
 import './globals.css';
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Header from "@/components/layout/Header";
 
 const roboto = Roboto({
   weight: ['400', '500', '700'],
@@ -12,12 +13,19 @@ const roboto = Roboto({
 });
 
 export const metadata = {
-  metadataBase: new URL('https://dentalclinic.com'),
+  metadataBase: new URL('https://dental-nextjs-agency.vercel.app'),
   title: {
     default: `${siteInfo.name} — ${siteInfo.tagline}`,
     template: `%s | ${siteInfo.name}`,
   },
   description: 'Providing exceptional dental care with modern technology and compassionate service.',
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' }
+    ],
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
     title: `${siteInfo.name} — ${siteInfo.tagline}`,
     description: 'Providing exceptional dental care with modern technology and compassionate service.',
@@ -75,6 +83,9 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en" className={roboto.variable}>
+      <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+      </head>
       <body className={roboto.className}>
         <SmoothScrollProvider>
           {children}

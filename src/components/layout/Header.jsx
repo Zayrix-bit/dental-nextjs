@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
-import { Activity, ChevronDown } from 'lucide-react';
-import { navLinks, ALL_SERVICES } from '@/data/siteData';
+import { Activity, ChevronDown, Phone } from 'lucide-react';
+import { navLinks, ALL_SERVICES, siteInfo } from '@/data/siteData';
 import Link from 'next/link';
 
 /* ── Services Dropdown (desktop) ── */
@@ -17,14 +17,11 @@ function ServicesDropdown({ scrolled }) {
   };
 
   const hide = () => {
-    /* Small delay prevents flicker when cursor briefly leaves the trigger */
     timeoutRef.current = setTimeout(() => setOpen(false), 120);
   };
 
-  /* Keep dropdown alive while cursor is inside it */
   const stayOpen = () => clearTimeout(timeoutRef.current);
   
-  /* Keyboard event handler */
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
@@ -42,19 +39,16 @@ function ServicesDropdown({ scrolled }) {
       onFocus={show}
       onBlur={hide}
     >
-      {/* Trigger */}
       <button
         type="button"
         onKeyDown={handleKeyDown}
         onClick={() => setOpen((prev) => !prev)}
-        suppressHydrationWarning
-        className={`flex items-center gap-1 text-[0.85rem] lg:text-[0.9rem] font-medium relative py-1 bg-transparent border-none cursor-pointer transition-colors duration-300 hover:after:w-full after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-[var(--color-accent)] after:transition-all after:duration-300 ${
-          scrolled
-            ? 'text-[var(--color-text-light)] hover:text-[var(--color-accent)]'
-            : 'text-white/85 hover:text-white'
+        className={`flex items-center gap-1 text-[0.85rem] lg:text-[0.9rem] font-medium relative py-1 bg-transparent border-none cursor-pointer transition-colors duration-300 hover:after:w-full after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-accent after:transition-all after:duration-300 ${
+          scrolled ? 'text-text-light hover:text-accent' : 'text-white/85 hover:text-white'
         }`}
         aria-haspopup="true"
         aria-expanded={open}
+        aria-label="Toggle Services Menu"
       >
         Services
         <ChevronDown
@@ -63,7 +57,6 @@ function ServicesDropdown({ scrolled }) {
         />
       </button>
 
-      {/* Dropdown Panel */}
       <div
         onMouseEnter={stayOpen}
         onMouseLeave={hide}
@@ -73,28 +66,24 @@ function ServicesDropdown({ scrolled }) {
             : 'opacity-0 scale-[0.97] -translate-y-1 pointer-events-none'
         }`}
       >
-        {/* Header accent bar */}
-        <div className="h-[3px] w-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)]" />
-
+        <div className="h-[3px] w-full bg-gradient-to-r from-primary to-accent" />
         <div className="p-2 grid grid-cols-2 gap-1">
           {ALL_SERVICES.filter(s => s.label !== 'Other').slice(0, 8).map(({ href, label }) => (
             <Link
               key={href}
               href={href}
               onClick={() => setOpen(false)}
-              className="px-3.5 py-2.5 rounded-lg text-[0.82rem] text-[var(--color-text-dark)] font-medium hover:bg-[var(--color-bg-section)] hover:text-[var(--color-accent)] focus:bg-[var(--color-bg-section)] focus:text-[var(--color-accent)] outline-none transition-all duration-150 text-left"
+              className="px-3.5 py-2.5 rounded-lg text-[0.82rem] text-text-dark font-medium hover:bg-bg-section hover:text-accent focus:bg-bg-section focus:text-accent outline-none transition-all duration-150 text-left"
             >
               {label}
             </Link>
           ))}
         </div>
-
-        {/* Footer CTA */}
-        <div className="px-4 py-2.5 bg-[var(--color-bg-section)] border-t border-[rgba(160,210,235,0.2)]">
+        <div className="px-4 py-2.5 bg-bg-section border-t border-[rgba(160,210,235,0.2)]">
           <Link
             href="/services"
             onClick={() => setOpen(false)}
-            className="flex items-center justify-center gap-1.5 text-[0.8rem] font-semibold text-[var(--color-accent)] hover:text-[var(--color-primary-dark)] transition-colors duration-150"
+            className="flex items-center justify-center gap-1.5 text-[0.8rem] font-semibold text-accent hover:text-primary-dark transition-colors duration-150"
           >
             View all services
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3">
@@ -116,6 +105,8 @@ function MobileServicesAccordion({ onClose }) {
       <button
         onClick={() => setOpen(!open)}
         className="flex items-center gap-2 text-lg text-white font-medium bg-transparent border-none cursor-pointer"
+        aria-expanded={open}
+        aria-label="Toggle Mobile Services"
       >
         Services
         <ChevronDown
@@ -125,7 +116,7 @@ function MobileServicesAccordion({ onClose }) {
       </button>
 
       {open && (
-        <div className="mt-3 w-64 bg-white/10 rounded-2xl overflow-hidden border border-white/10 backdrop-blur-sm">
+        <div className="mt-3 w-64 bg-white/10 rounded-2xl overflow-hidden border border-white/10 backdrop-blur-sm animate-[fadeInUp_0.2s_ease]">
           {ALL_SERVICES.filter(s => s.label !== 'Other').slice(0, 8).map(({ href, label }) => (
             <Link
               key={href}
@@ -136,29 +127,26 @@ function MobileServicesAccordion({ onClose }) {
               {label}
             </Link>
           ))}
-          <Link
-            href="/services"
-            onClick={onClose}
-            className="flex items-center justify-center gap-1.5 py-2.5 text-[0.8rem] font-semibold text-[var(--color-accent)] border-t border-white/10 hover:bg-white/10 transition-colors duration-150"
-          >
-            View all services →
-          </Link>
         </div>
       )}
     </div>
   );
 }
 
-/* ════════════════════════════════════════════════
-   HEADER
-   ════════════════════════════════════════════════ */
 export default function Header() {
   const [scrolled, setScrolled]   = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      // Adjusted scroll trigger for better mobile feel
+      setScrolled(window.scrollY > 20);
+    };
+
+    // Initialize state immediately to prevent "invisible on refresh" bug
+    onScroll();
+
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -173,37 +161,33 @@ export default function Header() {
     document.body.style.overflow = !mobileOpen ? 'hidden' : '';
   };
 
-  // Clean up body overflow when component unmounts
-  useEffect(() => {
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, []);
-
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 ${
-        scrolled ? 'header-glass shadow-[0_4px_15px_rgba(0,0,0,0.06)] py-2' : 'py-3 lg:py-4'
+      className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 border-b ${
+        scrolled 
+          ? 'header-glass shadow-[0_4px_20px_rgba(0,0,0,0.06)] py-1.5 border-white/10' 
+          : 'py-2.5 lg:py-4 border-transparent'
       }`}
     >
-      <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-[1240px] mx-auto px-4 md:px-6 lg:px-8 flex items-center justify-between">
 
         {/* Logo */}
         <Link
           href="/"
           onClick={closeMobile}
-          className={`relative z-[1001] flex items-center gap-2 text-xl font-bold transition-colors duration-300 ${
-            (scrolled && !mobileOpen) ? 'text-[var(--color-text-dark)]' : 'text-white'
+          className={`relative z-[1001] flex items-center gap-2.5 text-xl lg:text-2xl font-black transition-all duration-300 ${
+            (scrolled && !mobileOpen) ? 'text-text-dark scale-95' : 'text-white'
           }`}
+          aria-label={`${siteInfo.name} Home`}
         >
-          <div className="w-8 h-8 bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-primary)] rounded-full flex items-center justify-center">
-            <Activity className="w-4 h-4 text-white" strokeWidth={2.5} />
+          <div className="w-7.5 h-7.5 lg:w-8.5 lg:h-8.5 bg-linear-to-br from-accent to-primary rounded-full flex items-center justify-center shadow-lg shadow-accent/20">
+            <Activity className="w-4 h-4 lg:w-4.5 lg:h-4.5 text-white" strokeWidth={3} />
           </div>
-          <span className="tracking-tight">DentalCare</span>
+          <span className="tracking-tighter">DentalCare</span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+        <nav className="hidden md:flex items-center gap-5 lg:gap-8">
           {navLinks.filter(l => l.label !== 'Testimonials').map((link) => {
             if (link.label === 'Services') {
               return <ServicesDropdown key={link.href} scrolled={scrolled} />;
@@ -214,18 +198,35 @@ export default function Header() {
                 href={link.href}
                 onClick={closeMobile}
                 aria-current={pathname === link.href ? 'page' : undefined}
-                className={`text-[0.85rem] lg:text-[0.9rem] font-medium relative py-1 transition-colors duration-300 hover:after:w-full after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-[var(--color-accent)] after:transition-all after:duration-300 ${
-                  pathname === link.href ? 'text-[var(--color-accent)] after:w-full' : (scrolled ? 'text-[var(--color-text-light)] hover:text-[var(--color-accent)]' : 'text-white/85 hover:text-white')
+                className={`text-[0.85rem] lg:text-[0.92rem] font-semibold relative py-1 transition-colors duration-300 hover:after:w-full after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-accent after:transition-all after:duration-300 ${
+                  pathname === link.href ? 'text-accent after:w-full' : (scrolled ? 'text-text-light hover:text-accent' : 'text-white/85 hover:text-white')
                 }`}
               >
                 {link.label}
               </Link>
             );
           })}
+          
+          {/* Phone Number - Robust Link */}
+          <a 
+            href={`tel:${siteInfo.phoneRaw}`} 
+            className={`hidden lg:flex items-center gap-2.5 text-[0.88rem] font-bold transition-all duration-300 ${
+              scrolled ? 'text-rose-600 hover:text-rose-700' : 'text-white hover:text-rose-400'
+            }`}
+            aria-label={`Call us at ${siteInfo.phone}`}
+          >
+            <div className={`p-1.5 rounded-full transition-colors duration-300 border ${
+              scrolled ? 'bg-rose-50 border-rose-100 text-rose-600' : 'bg-white/10 border-white/10 text-white'
+            }`}>
+              <Phone className="w-3.5 h-3.5" strokeWidth={2.5} />
+            </div>
+            {siteInfo.phone}
+          </a>
+
           <Link
-            href="/contact"
+            href="#appointment"
             onClick={closeMobile}
-            className="btn-primary px-5 py-2 rounded-full text-[13px] font-semibold transition-transform hover:-translate-y-0.5"
+            className="btn-primary px-7 py-2.5 rounded-full text-[13px] font-extrabold shadow-lg shadow-black/10"
           >
             Book Now
           </Link>
@@ -234,17 +235,17 @@ export default function Header() {
         {/* Mobile Toggle */}
         <button
           onClick={toggleMobile}
-          suppressHydrationWarning
-          className={`flex md:hidden flex-col gap-[4px] cursor-pointer z-[1001] bg-transparent border-none p-1 ${
-            mobileOpen ? 'hamburger-active' : ''
-          }`}
-          aria-label="Toggle navigation"
+          className={`flex md:hidden flex-col gap-[5px] cursor-pointer z-[1001] bg-transparent border-none p-2 rounded-lg transition-colors duration-300 ${
+            scrolled && !mobileOpen ? 'hover:bg-slate-100' : 'hover:bg-white/5'
+          } ${mobileOpen ? 'hamburger-active' : ''}`}
+          aria-label="Toggle navigation menu"
+          aria-expanded={mobileOpen}
         >
           {[0, 1, 2].map((i) => (
             <span
               key={i}
-              className={`block w-[22px] h-[2.5px] rounded-[3px] transition-all duration-300 ${
-                scrolled && !mobileOpen ? 'bg-[var(--color-text-dark)]' : 'bg-white'
+              className={`block w-[24px] h-[2.5px] rounded-[3px] transition-all duration-300 ${
+                (scrolled && !mobileOpen) ? 'bg-text-dark' : 'bg-white'
               }`}
             />
           ))}
@@ -252,7 +253,13 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {mobileOpen && (
-          <nav className="fixed inset-0 bg-[rgba(13,39,51,0.97)] backdrop-blur-[20px] flex flex-col justify-center items-center gap-6 z-[999] overflow-y-auto py-20">
+          <nav className="fixed inset-0 bg-linear-to-br from-[#0d2733] to-[#1a3a4a] flex flex-col justify-center items-center gap-8 z-[999] overflow-y-auto pt-24 pb-12 animate-[fadeIn_0.3s_ease]">
+            {/* Topbar Info (In-Menu mobile only) */}
+            <div className="flex flex-col items-center gap-2 mb-4">
+               <span className="text-white/60 text-[10px] tracking-widest uppercase font-bold">Quick Contact</span>
+               <a href={`tel:${siteInfo.phoneRaw}`} className="text-rose-500 text-xl font-bold">{siteInfo.phone}</a>
+            </div>
+
             {navLinks.filter(l => l.label !== 'Testimonials').map((link) => {
               if (link.label === 'Services') {
                 return (
@@ -262,19 +269,19 @@ export default function Header() {
               return (
                 <Link
                   key={link.href}
+                  target={link.href.startsWith('http') ? '_blank' : '_self'}
                   href={link.href}
                   onClick={closeMobile}
-                  aria-current={pathname === link.href ? 'page' : undefined}
-                  className={`text-lg font-medium ${pathname === link.href ? 'text-[var(--color-accent)]' : 'text-white'}`}
+                  className={`text-xl font-bold tracking-tight ${pathname === link.href ? 'text-accent scale-110' : 'text-white'}`}
                 >
                   {link.label}
                 </Link>
               );
             })}
             <Link
-             href="/contact"
+              href="#appointment"
               onClick={closeMobile}
-              className="btn-primary px-8 py-3 rounded-full text-[14px] font-semibold mt-4"
+              className="btn-primary w-64 text-center py-4 rounded-full text-[14px] font-bold mt-6 shadow-xl shadow-accent/20"
             >
               Book Appointment
             </Link>

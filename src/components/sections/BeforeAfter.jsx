@@ -33,10 +33,11 @@ const galleryData = [
   }
 ];
 
-function GalleryCard({ item }) {
+function GalleryCard({ item, onInteractionStart, onInteractionEnd }) {
   const [position, setPosition] = useState(50);
   const containerRef = useRef(null);
   const dragging = useRef(false);
+  const isInteracting = useRef(false);
 
   const updatePosition = (clientX) => {
     if (!containerRef.current) return;
@@ -46,39 +47,58 @@ function GalleryCard({ item }) {
     setPosition(pct);
   };
 
-  const handleMove = (clientX) => {
+  const handleMove = (e, clientX) => {
     if (!dragging.current) return;
+    
+    // Professional interaction management
+    if (e.cancelable) e.preventDefault();
+    e.stopPropagation();
+    
     requestAnimationFrame(() => updatePosition(clientX));
   };
 
+  const stopDragging = () => {
+    if (dragging.current) {
+       dragging.current = false;
+       isInteracting.current = false;
+       onInteractionEnd?.();
+    }
+  };
+
   useEffect(() => {
-    const handleMouseUp = () => { dragging.current = false; };
-    window.addEventListener('mouseup', handleMouseUp);
-    window.addEventListener('touchend', handleMouseUp);
+    window.addEventListener('mouseup', stopDragging);
+    window.addEventListener('touchend', stopDragging);
     return () => {
-      window.removeEventListener('mouseup', handleMouseUp);
-      window.removeEventListener('touchend', handleMouseUp);
+      window.removeEventListener('mouseup', stopDragging);
+      window.removeEventListener('touchend', stopDragging);
     };
   }, []);
 
   return (
     <div className="flex flex-col bg-white rounded-[1.25rem] lg:rounded-[1.5rem] shadow-sm hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 overflow-hidden group hover:-translate-y-1.5 border border-slate-100/80 w-[75vw] sm:w-[280px] md:w-full snap-center shrink-0 h-full mx-auto md:mx-0 relative">
 
-      {/* Slider Container */}
+      {/* Slider Container - touch-none is critical for interaction stability */}
       <div
         ref={containerRef}
         className="relative cursor-col-resize select-none touch-none overflow-hidden aspect-video w-full"
         onMouseDown={(e) => {
+          e.stopPropagation();
           dragging.current = true;
+          isInteracting.current = true;
+          onInteractionStart?.();
           updatePosition(e.clientX);
         }}
-        onMouseMove={(e) => handleMove(e.clientX)}
+        onMouseMove={(e) => handleMove(e, e.clientX)}
         onTouchStart={(e) => {
+          e.stopPropagation();
           dragging.current = true;
+          isInteracting.current = true;
+          onInteractionStart?.();
           updatePosition(e.touches[0].clientX);
         }}
-        onTouchMove={(e) => handleMove(e.touches[0].clientX)}
+        onTouchMove={(e) => handleMove(e, e.touches[0].clientX)}
       >
+        {/* ... existing slider content ... */}
         {/* After Image (Background) */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <Image
@@ -159,38 +179,106 @@ function GalleryCard({ item }) {
 }
 
 export default function BeforeAfter() {
+  const tripleData = [...galleryData, ...galleryData, ...galleryData];
+  const scrollRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const animationRef = useRef(null);
+
+  useEffect(() => {
+    if (!scrollRef.current) return;
+
+    const scrollContainer = scrollRef.current;
+    const singleSetWidth = scrollContainer.scrollWidth / 3;
+
+    // Start in the middle set for seamless initial look
+    if (scrollContainer.scrollLeft === 0) {
+      scrollContainer.scrollLeft = singleSetWidth;
+    }
+
+    const scrollStep = () => {
+      if (!isPaused && scrollContainer) {
+        scrollContainer.scrollLeft += 0.8; // Smooth agency-grade speed
+
+        // Silent reset logic for infinite manual/auto loop
+        if (scrollContainer.scrollLeft >= singleSetWidth * 2) {
+          scrollContainer.scrollLeft = singleSetWidth;
+        } else if (scrollContainer.scrollLeft <= 0) {
+          scrollContainer.scrollLeft = singleSetWidth;
+        }
+      }
+      animationRef.current = requestAnimationFrame(scrollStep);
+    };
+
+    animationRef.current = requestAnimationFrame(scrollStep);
+    return () => cancelAnimationFrame(animationRef.current);
+  }, [isPaused]);
+
   return (
     <section id="gallery" className="py-10 md:py-16 bg-zinc-50 overflow-hidden relative">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-accent/5 rounded-full blur-[80px] pointer-events-none translate-y-1/2 -translate-x-1/3"></div>
 
-      <div className="max-w-[1200px] mx-auto relative z-10 w-full">
+      <div className="max-w-[1240px] mx-auto relative z-10 w-full overflow-hidden">
         <ScrollReveal>
-          <div className="text-center max-w-2xl mx-auto mb-8 md:mb-12 px-4">
-            <div className="inline-flex items-center gap-2 bg-white text-primary px-3 py-1.5 rounded-full text-[9px] md:text-[10px] font-bold tracking-widest uppercase mb-4 border border-slate-100 shadow-sm">
-               Real Transformations
+          <div className="mb-10 lg:mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6 lg:gap-12 px-4">
+            <div className="max-w-[600px] text-left">
+              <div className="inline-flex items-center gap-2 bg-white text-primary px-3 py-1.5 rounded-full text-[9px] md:text-[10px] font-bold tracking-widest uppercase mb-4 border border-slate-100 shadow-sm">
+                 Real Transformations
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-[3.25rem] font-black text-text-dark leading-[1.05] tracking-tighter">
+                Life-Changing <span className="text-primary italic font-medium">Smiles.</span>
+              </h2>
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-black text-text-dark mb-3 md:mb-4 leading-tight tracking-tight">
-              Life-Changing <span className="text-primary italic font-medium">Smiles.</span>
-            </h2>
-            <p className="text-slate-500 text-[0.85rem] md:text-base leading-relaxed max-w-[450px] mx-auto">
-              Explore our gallery of actual patient results. Transparency and excellence, showcased side-by-side.
-            </p>
+            <div className="max-w-[460px] md:border-l md:border-slate-200 md:pl-8">
+              <p className="text-slate-500 text-[0.9rem] md:text-[1rem] leading-relaxed font-medium text-left">
+                Explore our gallery of actual patient results. Transparency and excellence, showcased side-by-side.
+              </p>
+            </div>
           </div>
         </ScrollReveal>
 
-        {/* Carousel Container */}
-        <div className="px-4 md:px-6 w-full relative">
-          <div className="flex flex-nowrap lg:grid lg:grid-cols-3 gap-4 md:gap-6 w-full overflow-x-auto lg:overflow-visible snap-x snap-mandatory pb-6 pt-2 hide-scrollbar -mx-4 px-4 md:-mx-6 md:px-6 lg:mx-0 lg:px-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-            {galleryData.map((item, index) => (
-              <ScrollReveal key={item.id} delay={index * 100} className="shrink-0 h-auto flex justify-center items-stretch w-[75vw] sm:w-[280px] md:w-[320px] lg:w-auto">
-                <GalleryCard item={item} />
-              </ScrollReveal>
+        {/* Hybrid Interactive Loop Container */}
+        <div className="w-full relative px-4">
+          <div 
+            ref={scrollRef}
+            className="flex flex-nowrap gap-4 md:gap-8 pb-10 overflow-x-auto hide-scrollbar cursor-grab active:cursor-grabbing select-none"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setIsPaused(false)}
+            onMouseDown={(e) => {
+              setIsPaused(true);
+              const startX = e.pageX - scrollRef.current.offsetLeft;
+              const scrollLeft = scrollRef.current.scrollLeft;
+              
+              const handleMouseMove = (moveE) => {
+                const x = moveE.pageX - scrollRef.current.offsetLeft;
+                const walk = (x - startX) * 2;
+                scrollRef.current.scrollLeft = scrollLeft - walk;
+              };
+              
+              const handleMouseUp = () => {
+                setIsPaused(false);
+                window.removeEventListener('mousemove', handleMouseMove);
+                window.removeEventListener('mouseup', handleMouseUp);
+              };
+              
+              window.addEventListener('mousemove', handleMouseMove);
+              window.addEventListener('mouseup', handleMouseUp);
+            }}
+          >
+            {tripleData.map((item, index) => (
+              <div key={`${item.id}-${index}`} className="w-[85vw] sm:w-[40vw] lg:w-[380px] shrink-0">
+                <GalleryCard 
+                  item={item} 
+                  onInteractionStart={() => setIsPaused(true)}
+                  onInteractionEnd={() => setIsPaused(false)}
+                />
+              </div>
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );

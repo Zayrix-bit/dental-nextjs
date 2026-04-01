@@ -44,19 +44,49 @@ export default function LocationMap({ className = "" }) {
         {/* Content Container */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_350px] gap-6 lg:gap-8 items-stretch mx-auto max-w-[1000px]">
           
-          {/* Map Embed */}
-          <div className="w-full h-[300px] lg:h-[420px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-sm hover:shadow-md border border-slate-100 bg-slate-50 relative group transition-shadow duration-300">
-            <iframe
-              src={siteInfo.mapEmbedUrl}
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-95"
-              title="Dental Clinic Location Map"
-            ></iframe>
+          {/* Map Preview (Privacy-Friendly, No Cookies) */}
+          <div className="w-full h-[300px] lg:h-[420px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-sm hover:shadow-md border border-slate-100 bg-slate-900 relative group transition-shadow duration-300">
+            {/* Background Image / Placeholder */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center grayscale-[0.3] group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+              style={{ backgroundImage: `url('/images/hero-bg.png')`, opacity: 0.4 }}
+            />
+            
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-slate-900/40 to-transparent" />
+            
+            {/* Content Over Map */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10">
+              <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center mb-4 transform group-hover:scale-110 transition-transform duration-500">
+                <MapPinIcon />
+              </div>
+              <h4 className="text-white text-lg lg:text-xl font-bold mb-2">Google Maps Tracking Blocked</h4>
+              <p className="text-white/70 text-xs lg:text-sm max-w-[280px] mb-6 leading-relaxed">
+                To protect your privacy, we don't load third-party maps directly. Click below to view our location safely.
+              </p>
+              <a
+                href={mapsLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white text-slate-900 px-6 py-2.5 rounded-full text-xs lg:text-sm font-bold hover:bg-accent hover:text-white transition-all duration-300 shadow-xl"
+              >
+                View on Google Maps
+                <NavigationIcon />
+              </a>
+            </div>
+
+            {/* Address Badge */}
+            <div className="absolute bottom-4 left-4 right-4 sm:left-6 sm:right-auto z-10">
+              <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center">
+                  <MapPinIcon />
+                </div>
+                <div className="text-left">
+                  <p className="text-[10px] uppercase tracking-widest font-bold text-accent">Location</p>
+                  <p className="text-white text-xs font-medium">{siteInfo.address.street}, NY</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Location Details Card */}

@@ -14,20 +14,24 @@ export default function Services({ isHomePage = false }) {
 
       <div className="max-w-[1200px] mx-auto px-4 md:px-6 relative z-10 w-full">
         <ScrollReveal>
-          <div className="mb-6 lg:mb-8 text-center max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-white text-primary px-3 py-1.5 rounded-full text-[9px] md:text-[10px] font-bold tracking-widest uppercase mb-3 lg:mb-4 border border-slate-100 shadow-sm">
-              Premium Care
+          <div className="mb-10 lg:mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6 lg:gap-12">
+            <div className="max-w-[600px]">
+              <div className="inline-flex items-center gap-2 bg-white text-primary px-3 py-1.5 rounded-full text-[9px] md:text-[10px] font-bold tracking-widest uppercase mb-4 border border-slate-100 shadow-sm">
+                Premium Care
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-[3.25rem] font-black text-text-dark leading-[1.05] tracking-tighter">
+                Signature <span className="text-primary italic font-medium">Treatments.</span>
+              </h2>
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-black text-text-dark mb-3 lg:mb-4 leading-tight tracking-tight">
-              Signature <span className="text-primary italic font-medium">Treatments.</span>
-            </h2>
-            <p className="text-slate-500 text-[0.85rem] md:text-base leading-relaxed max-w-[450px] mx-auto">
-              Bespoke dental care designed to elevate your aesthetic, restore optimal function, and prioritize your comfort.
-            </p>
+            <div className="max-w-[460px] md:border-l md:border-slate-200 md:pl-8">
+              <p className="text-slate-500 text-[0.9rem] md:text-[1rem] leading-relaxed font-medium">
+                Bespoke dental care designed to elevate your aesthetic, restore optimal function, and prioritize your comfort.
+              </p>
+            </div>
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4 mt-4 lg:mt-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 mt-6 lg:mt-10 max-w-[1100px] mx-auto">
           {[...services].sort((a, b) => (b.isHighlighted ? 1 : 0) - (a.isHighlighted ? 1 : 0)).map((service, idx) => (
             <ScrollReveal 
               key={service.id || service.slug || service.title} 
@@ -51,14 +55,14 @@ export default function Services({ isHomePage = false }) {
                   )}
 
                   {/* Image Area */}
-                  <div className="relative w-full aspect-[4/3] sm:aspect-3/2 overflow-hidden bg-slate-100">
+                  <div className="relative w-full aspect-4/3 sm:aspect-3/2 overflow-hidden bg-slate-100">
                     <div className="absolute inset-0 bg-linear-to-t from-primary/80 via-primary/10 to-transparent z-10 transition-opacity duration-500 opacity-50 group-hover:opacity-70"></div>
                     
                     <Image 
                       src={service.image}
                       alt={service.altText || service.title}
                       fill
-                      className="object-cover transition-transform duration-[1s] ease-out group-hover:scale-105"
+                      className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 250px"
                       priority={idx < 2}
                       loading={idx < 2 ? 'eager' : 'lazy'}
@@ -74,12 +78,12 @@ export default function Services({ isHomePage = false }) {
                   </div>
                   
                   {/* Text Content */}
-                  <div className="p-2 pt-3 sm:p-3 sm:pt-4 md:p-3.5 md:pt-5 lg:p-4 lg:pt-6 flex flex-col flex-grow relative z-10 bg-white">
+                  <div className="p-2 pt-3 sm:p-3 sm:pt-4 md:p-3.5 md:pt-5 lg:p-4 lg:pt-6 flex flex-col grow relative z-10 bg-white">
                     <h3 className="text-[11px] sm:text-sm lg:text-base font-bold text-text-dark mb-1 sm:mb-1.5 group-hover:text-primary transition-colors duration-300 leading-tight">
                       {service.title}
                     </h3>
                     
-                    <p className="text-[8px] sm:text-[0.75rem] lg:text-[0.8rem] text-slate-500 leading-snug mb-2 sm:mb-3 flex-grow line-clamp-2">
+                    <p className="text-[8px] sm:text-[0.75rem] lg:text-[0.8rem] text-slate-500 leading-snug mb-2 sm:mb-3 grow line-clamp-2">
                       {service.shortDescription || service.description}
                     </p>
 
