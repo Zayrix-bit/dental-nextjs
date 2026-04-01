@@ -248,10 +248,13 @@ export default function Contact({ className = "" }) {
 
   return (
     <section id="appointment" className="py-10 lg:py-16 bg-bg-section px-4 overflow-hidden">
-      <div className="max-w-[1200px] mx-auto text-center mb-8 lg:mb-10">
-        <h2 className="text-3xl sm:text-4xl lg:text-[3.25rem] font-black text-text-dark tracking-tighter leading-[1.1]">
-           Schedule Your Private <span className="text-primary italic font-medium">Consultation.</span>
+      <div className="max-w-[1000px] mx-auto px-4 md:px-6 mb-10 lg:mb-14 text-left">
+        <h2 className="text-3xl sm:text-4xl lg:text-[3.25rem] font-bold text-text-dark leading-[1.1] tracking-tight mb-6">
+           Schedule Your Private <span className="text-primary">Consultation.</span>
         </h2>
+        <p className="text-slate-500 text-[0.9rem] md:text-[1rem] leading-relaxed font-medium mb-8 max-w-2xl">
+          Begin your journey towards a clinical masterpiece. Our coordinators will contact you within 12 hours.
+        </p>
       </div>
 
       <div 

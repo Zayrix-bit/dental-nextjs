@@ -14,21 +14,16 @@ export default function Services({ isHomePage = false }) {
 
       <div className="max-w-[1200px] mx-auto px-4 md:px-6 relative z-10 w-full">
         <ScrollReveal>
-          <div className="mb-10 lg:mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6 lg:gap-12">
-            <div className="max-w-[600px]">
-              <div className="inline-flex items-center gap-2 bg-white text-primary px-3 py-1.5 rounded-full text-[9px] md:text-[10px] font-bold tracking-widest uppercase mb-4 border border-slate-100 shadow-sm">
-                Premium Care
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-[3.25rem] font-black text-text-dark leading-[1.05] tracking-tighter">
-                Signature <span className="text-primary italic font-medium">Treatments.</span>
-              </h2>
-            </div>
-            <div className="max-w-[460px] md:border-l md:border-slate-200 md:pl-8">
-              <p className="text-slate-500 text-[0.9rem] md:text-[1rem] leading-relaxed font-medium">
-                Bespoke dental care designed to elevate your aesthetic, restore optimal function, and prioritize your comfort.
-              </p>
-            </div>
+          <div className="mb-10 lg:mb-14 flex flex-col gap-6">
+          <div className="max-w-3xl text-left">
+            <h2 className="text-3xl sm:text-4xl lg:text-[3.25rem] font-bold text-text-dark leading-[1.1] tracking-tight mb-6">
+              Signature <span className="text-primary">Treatments.</span>
+            </h2>
+            <p className="text-slate-500 text-[0.9rem] md:text-[1rem] leading-relaxed font-medium mb-8 max-w-2xl">
+              Bespoke dental care designed to elevate your aesthetic, restore optimal function, and prioritize your comfort.
+            </p>
           </div>
+        </div>
         </ScrollReveal>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 mt-6 lg:mt-10 max-w-[1100px] mx-auto">

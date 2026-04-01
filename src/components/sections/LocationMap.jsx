@@ -35,10 +35,13 @@ export default function LocationMap({ className = "" }) {
       <div className="max-w-[1200px] mx-auto px-6 overflow-hidden">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-14">
-          <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold text-text-dark tracking-tight leading-[1.1]">
-            Find Our <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">Clinic.</span>
+        <div className="mb-10 lg:mb-14 max-w-3xl text-left">
+          <h2 className="text-3xl md:text-4xl lg:text-[3.25rem] font-bold text-text-dark tracking-tight leading-[1.1] mb-6">
+            Find Our <span className="text-primary">Clinic.</span>
           </h2>
+          <p className="text-slate-500 text-[0.9rem] md:text-[1rem] leading-relaxed font-medium mb-8 max-w-2xl">
+            Visit our state-of-the-art facility located in the heart of the city. We provide a sanctuary of clinical excellence and patient comfort.
+          </p>
         </div>
 
         {/* Content Container */}

@@ -75,7 +75,7 @@ function GalleryCard({ item, onInteractionStart, onInteractionEnd }) {
   }, []);
 
   return (
-    <div className="flex flex-col bg-white rounded-[1.25rem] lg:rounded-[1.5rem] shadow-sm hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 overflow-hidden group hover:-translate-y-1.5 border border-slate-100/80 w-[75vw] sm:w-[280px] md:w-full snap-center shrink-0 h-full mx-auto md:mx-0 relative">
+    <div className="flex flex-col bg-white rounded-3xl shadow-sm hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 overflow-hidden group hover:-translate-y-1.5 border border-slate-100/80 w-[75vw] sm:w-[280px] md:w-full snap-center shrink-0 h-full mx-auto md:mx-0 relative">
 
       {/* Slider Container - touch-none is critical for interaction stability */}
       <div
@@ -111,7 +111,7 @@ function GalleryCard({ item, onInteractionStart, onInteractionEnd }) {
         </div>
 
         {/* Before Image (Clipped) */}
-        <div className="absolute inset-0 z-[1] overflow-hidden border-r-2 border-white/80" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}>
+        <div className="absolute inset-0 z-1 overflow-hidden border-r-2 border-white/80" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}>
           <Image
             src={item.beforeSrc}
             alt="Before treatment"
@@ -123,7 +123,7 @@ function GalleryCard({ item, onInteractionStart, onInteractionEnd }) {
 
         {/* Slider Handle Pill */}
         <div
-          className="absolute top-0 bottom-0 w-[2px] bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)] z-[3] cursor-col-resize transition-transform duration-75 ease-out"
+          className="absolute top-0 bottom-0 w-px bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)] z-3 cursor-col-resize transition-transform duration-75 ease-out"
           style={{ left: `${position}%`, transform: 'translateX(-50%)' }}
         >
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-9 md:w-7 md:h-10 bg-white/90 backdrop-blur-md rounded-full shadow-lg border border-slate-100 flex flex-col items-center justify-center gap-[2px] transition-transform duration-300 group-hover:scale-110">
@@ -134,20 +134,20 @@ function GalleryCard({ item, onInteractionStart, onInteractionEnd }) {
         </div>
 
         {/* Floating Minimal Labels */}
-        <div className="absolute top-2.5 left-2.5 md:top-3 md:left-3 z-[4] px-2 py-1 bg-black/50 backdrop-blur-md rounded-full border border-white/10 text-white text-[8px] md:text-[9px] font-bold tracking-widest uppercase shadow-sm transition-opacity duration-300 group-hover:opacity-0 block">
+        <div className="absolute top-2.5 left-2.5 md:top-3 md:left-3 z-4 px-2 py-1 bg-black/50 backdrop-blur-md rounded-full border border-white/10 text-white text-[8px] md:text-[9px] font-bold tracking-widest uppercase shadow-sm transition-opacity duration-300 group-hover:opacity-0 block">
           Before
         </div>
-        <div className="absolute top-2.5 right-2.5 md:top-3 md:right-3 z-[4] px-2 py-1 bg-primary/80 backdrop-blur-md rounded-full border border-white/10 text-white text-[8px] md:text-[9px] font-bold tracking-widest uppercase shadow-sm transition-opacity duration-300 group-hover:opacity-0 block">
+        <div className="absolute top-2.5 right-2.5 md:top-3 md:right-3 z-4 px-2 py-1 bg-primary/80 backdrop-blur-md rounded-full border border-white/10 text-white text-[8px] md:text-[9px] font-bold tracking-widest uppercase shadow-sm transition-opacity duration-300 group-hover:opacity-0 block">
           After
         </div>
       </div>
 
       {/* Card Content Area */}
-      <div className="p-4 md:p-5 lg:p-6 flex flex-col justify-between flex-grow bg-white relative z-[5]">
+      <div className="p-4 md:p-5 lg:p-6 flex flex-col justify-between grow bg-white relative z-5">
         
         {/* Floating Star Badge over the image split */}
         <div className="absolute top-0 right-4 md:right-5 -translate-y-1/2 bg-white px-2.5 py-1 md:px-3 md:py-1.5 rounded-full shadow-sm border border-slate-50 flex items-center gap-0.5 z-20 transition-transform duration-300 group-hover:-translate-y-1">
-            <span className="flex gap-[1px]">
+            <span className="flex gap-px">
                {[1, 2, 3, 4, 5].map(i => (
                  <Star key={i} className="w-2.5 h-2.5 md:w-3 md:h-3 fill-[#FBBC04] text-[#FBBC04]" />
                ))}
@@ -221,17 +221,12 @@ export default function BeforeAfter() {
 
       <div className="max-w-[1240px] mx-auto relative z-10 w-full overflow-hidden">
         <ScrollReveal>
-          <div className="mb-10 lg:mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6 lg:gap-12 px-4">
-            <div className="max-w-[600px] text-left">
-              <div className="inline-flex items-center gap-2 bg-white text-primary px-3 py-1.5 rounded-full text-[9px] md:text-[10px] font-bold tracking-widest uppercase mb-4 border border-slate-100 shadow-sm">
-                 Real Transformations
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-[3.25rem] font-black text-text-dark leading-[1.05] tracking-tighter">
-                Life-Changing <span className="text-primary italic font-medium">Smiles.</span>
+          <div className="mb-10 lg:mb-14 flex flex-col gap-6 px-4">
+            <div className="max-w-3xl text-left">
+              <h2 className="text-3xl sm:text-4xl lg:text-[3.25rem] font-bold text-text-dark leading-[1.1] tracking-tight mb-6">
+                Life-Changing <span className="text-primary">Smiles.</span>
               </h2>
-            </div>
-            <div className="max-w-[460px] md:border-l md:border-slate-200 md:pl-8">
-              <p className="text-slate-500 text-[0.9rem] md:text-[1rem] leading-relaxed font-medium text-left">
+              <p className="text-slate-500 text-[0.9rem] md:text-[1rem] leading-relaxed font-medium mb-8 max-w-2xl">
                 Explore our gallery of actual patient results. Transparency and excellence, showcased side-by-side.
               </p>
             </div>

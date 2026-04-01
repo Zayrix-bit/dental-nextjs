@@ -22,15 +22,12 @@ export default function Testimonials() {
     <section id="testimonials" className="py-16 lg:py-24 bg-bg-light overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6">
         <ScrollReveal>
-          <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20 flex flex-col items-center">
-            <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-bold text-[0.7rem] tracking-widest uppercase mb-4 border border-primary/20 shadow-sm">
-              Authentic Reviews
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold text-text-dark mb-4 tracking-tight leading-[1.1]">
-              Patient <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">Stories.</span>
+          <div className="max-w-3xl mb-16 md:mb-20 text-left">
+            <h2 className="text-3xl md:text-4xl lg:text-[3.25rem] font-bold text-text-dark mb-6 tracking-tight leading-[1.1]">
+              Patient <span className="text-primary">Stories.</span>
             </h2>
-            <p className="text-text-light text-sm lg:text-base max-w-xl mx-auto leading-relaxed font-medium">
-              Don&apos;t just take our word for it. Hear from those who have experienced our care.
+            <p className="text-text-light text-sm lg:text-base max-w-2xl leading-relaxed font-medium mb-8">
+              Don&apos;t just take our word for it. Hear from those who have experienced our clinical excellence firsthand.
             </p>
           </div>
         </ScrollReveal>

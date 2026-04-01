@@ -36,14 +36,14 @@ export default function FAQ() {
 
   return (
     <section id="faq" className="py-10 lg:py-16 bg-white px-4">
-      <div className="max-w-[760px] mx-auto">
+      <div className="max-w-[1200px] mx-auto px-4 md:px-6">
         {/* Header Section */}
-        <div className="text-center mb-8 lg:mb-10">
-          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-black text-text-dark tracking-tighter leading-[1.1] mb-5">
-            Frequently Asked <span className="text-primary italic font-medium tracking-tight">Questions.</span>
+        <div className="mb-10 lg:mb-14 max-w-3xl text-left">
+          <h2 className="text-3xl sm:text-4xl lg:text-[3.25rem] font-bold text-text-dark leading-[1.1] tracking-tight mb-6">
+            Frequently Asked <span className="text-primary">Questions.</span>
           </h2>
-          <p className="text-text-light text-base lg:text-[1.05rem] max-w-[580px] mx-auto leading-relaxed opacity-90">
-            Everything you need to know about our premium care standards and what to expect during your journey with us.
+          <p className="text-slate-500 text-[0.9rem] md:text-[1rem] leading-relaxed font-medium mb-8 max-w-2xl">
+            Everything you need to know about our clinical procedures, elite membership options, and concierge patient care.
           </p>
         </div>
 

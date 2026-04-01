@@ -61,9 +61,9 @@ export default function Hero() {
           </div>
 
           {/* Heading */}
-          <h1 className="text-4xl md:text-5xl lg:text-[4rem] font-extrabold text-white mb-5 lg:mb-6 leading-[1.05] tracking-tighter">
+          <h1 className="text-4xl md:text-6xl lg:text-[4.5rem] font-bold text-white mb-6 leading-[1.1] tracking-tight">
             Signature Smiles, <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-accent to-[#38BDF8]">Tailored Excellence.</span>
+            <span className="text-accent underline decoration-accent/30 decoration-offset-8">Tailored Excellence.</span>
           </h1>
 
           {/* Subtitle */}
