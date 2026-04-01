@@ -33,28 +33,28 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-[#051117] text-white/80 overflow-hidden border-t border-white/5 pt-24">
+    <footer className="relative bg-[#051117] text-white/80 overflow-hidden border-t border-white/5 pt-14">
       {/* Background Subtle Glows */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[var(--color-primary)]/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[var(--color-accent)]/10 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Main Container */}
-      <div className="max-w-[1200px] mx-auto px-6 pb-16 relative z-10">
+      <div className="max-w-[1200px] mx-auto px-6 pb-12 relative z-10">
         
         {/* Top CTA Row */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b border-white/10 pb-16 mb-16 gap-8">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b border-white/10 pb-10 mb-10 gap-8">
           <div>
-            <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
+            <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-white mb-3">
               Ready for a Brighter Smile?
             </h3>
-            <p className="text-white/60 max-w-md text-[1.05rem] leading-relaxed">
+            <p className="text-white/60 max-w-md text-[0.95rem] leading-relaxed">
               Join thousands of satisfied patients. Book your comprehensive consultation today and experience premium dental care.
             </p>
           </div>
           <div className="shrink-0 flex items-center gap-4">
             <Link 
-              href="/contact" 
-              className="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-[#051117] font-semibold rounded-full overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_rgba(255,255,255,0.1)]"
+              href="#appointment" 
+              className="group relative inline-flex items-center justify-center px-8 py-3.5 bg-white text-[#051117] font-bold rounded-full overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_rgba(255,255,255,0.1)] text-sm"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-white opacity-0 group-hover:opacity-100 transition-opacity" />
               <span className="relative z-10 flex items-center gap-2">
@@ -70,42 +70,42 @@ export default function Footer() {
           
           {/* Brand Column */}
           <ScrollReveal className="lg:col-span-4">
-            <Link href="/" className="flex items-center gap-3 text-2xl font-bold text-white mb-8 group inline-flex">
-              <div className="w-10 h-10 bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-primary)] rounded-full flex items-center justify-center relative overflow-hidden shrink-0">
-                <Activity className="w-6 h-6 text-white relative z-10" strokeWidth={2} />
+            <Link href="/" className="flex items-center gap-3 text-xl font-bold text-white mb-6 group inline-flex">
+              <div className="w-9 h-9 bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-primary)] rounded-full flex items-center justify-center relative overflow-hidden shrink-0">
+                <Activity className="w-5 h-5 text-white relative z-10" strokeWidth={2} />
                 <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
-              <span className="tracking-tight">{siteInfo.name}<span className="text-[var(--color-accent)]">.</span></span>
+              <span className="tracking-tight">{siteInfo.name}<span className="text-accent">.</span></span>
             </Link>
-            <p className="text-white/50 text-[0.95rem] leading-relaxed mb-8 max-w-sm">
+            <p className="text-white/50 text-[0.9rem] leading-relaxed mb-6 max-w-sm">
               Redefining modern dentistry with advanced technology, compassionate staff, and a commitment to your lifelong oral health.
             </p>
             {/* Social Links */}
-            <div className="flex items-center gap-4">
-              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all duration-300 group">
-                <FacebookIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+            <div className="flex items-center gap-3">
+              <a href="#" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all duration-300 group">
+                <FacebookIcon className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all duration-300 group">
-                <InstagramIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+              <a href="#" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all duration-300 group">
+                <InstagramIcon className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all duration-300 group">
-                <TwitterIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+              <a href="#" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all duration-300 group">
+                <TwitterIcon className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
               </a>
             </div>
           </ScrollReveal>
 
           {/* Navigation */}
           <ScrollReveal delay={100} className="lg:col-span-2 lg:col-start-6">
-            <h4 className="text-white text-sm font-semibold mb-6 tracking-wide uppercase mt-2">Explore</h4>
-            <ul className="space-y-4">
+            <h4 className="text-white text-[13px] font-bold mb-5 tracking-widest uppercase mt-1 opacity-90">Explore</h4>
+            <ul className="space-y-3.5">
               {footerQuickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="group flex items-center gap-2 text-white/50 hover:text-white text-[0.95rem] transition-colors"
+                    className="group flex items-center gap-2 text-white/50 hover:text-white text-[0.9rem] transition-colors"
                   >
-                    <span className="w-0 h-[1px] bg-[var(--color-accent)] group-hover:w-3 transition-all duration-300 opacity-0 group-hover:opacity-100" />
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">
+                    <span className="w-0 h-[1px] bg-accent group-hover:w-3 transition-all duration-300 opacity-0 group-hover:opacity-100" />
+                    <span className="group-hover:translate-x-1 transition-transform duration-300 font-medium">
                       {link.label}
                     </span>
                   </Link>
@@ -116,16 +116,16 @@ export default function Footer() {
 
           {/* Services */}
           <ScrollReveal delay={200} className="lg:col-span-2">
-            <h4 className="text-white text-sm font-semibold mb-6 tracking-wide uppercase mt-2">Services</h4>
-            <ul className="space-y-4">
+            <h4 className="text-white text-[13px] font-bold mb-5 tracking-widest uppercase mt-1 opacity-90">Services</h4>
+            <ul className="space-y-3.5">
               {services.slice(0, 5).map((s) => (
                 <li key={s.id}>
                   <Link
                     href="/services"
-                    className="group flex items-center gap-2 text-white/50 hover:text-white text-[0.95rem] transition-colors"
+                    className="group flex items-center gap-2 text-white/50 hover:text-white text-[0.9rem] transition-colors"
                   >
-                    <span className="w-0 h-[1px] bg-[var(--color-accent)] group-hover:w-3 transition-all duration-300 opacity-0 group-hover:opacity-100" />
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">
+                    <span className="w-0 h-[1px] bg-accent group-hover:w-3 transition-all duration-300 opacity-0 group-hover:opacity-100" />
+                    <span className="group-hover:translate-x-1 transition-transform duration-300 font-medium">
                       {s.title}
                     </span>
                   </Link>
@@ -136,14 +136,14 @@ export default function Footer() {
 
           {/* Contact */}
           <ScrollReveal delay={300} className="lg:col-span-3">
-            <h4 className="text-white text-sm font-semibold mb-6 tracking-wide uppercase mt-2">Connect</h4>
-            <ul className="space-y-5">
+            <h4 className="text-white text-[13px] font-bold mb-5 tracking-widest uppercase mt-1 opacity-90">Connect</h4>
+            <ul className="space-y-4">
               <li>
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0">
-                    <MapPin className="w-4 h-4 text-[var(--color-accent)]" />
+                <div className="flex items-start gap-3">
+                  <div className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center shrink-0">
+                    <MapPin className="w-3.5 h-3.5 text-accent" />
                   </div>
-                  <span className="text-white/60 text-[0.95rem] leading-relaxed pt-2">
+                  <span className="text-white/60 text-[0.9rem] leading-relaxed pt-1.5 font-medium">
                     {siteInfo.address.street}
                     <br />
                     {siteInfo.address.city}
@@ -151,21 +151,21 @@ export default function Footer() {
                 </div>
               </li>
               <li>
-                <a href={`tel:${siteInfo.phoneRaw}`} className="flex items-center gap-4 group">
-                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-[var(--color-accent)] transition-colors">
-                    <Phone className="w-4 h-4 text-[var(--color-accent)] group-hover:text-white transition-colors" />
+                <a href={`tel:${siteInfo.phoneRaw}`} className="flex items-center gap-3 group">
+                  <div className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-accent transition-colors">
+                    <Phone className="w-3.5 h-3.5 text-accent group-hover:text-white transition-colors" />
                   </div>
-                  <span className="text-white/60 group-hover:text-white text-[0.95rem] transition-colors">
+                  <span className="text-white/60 group-hover:text-white text-[0.9rem] transition-colors font-semibold">
                     {siteInfo.phone}
                   </span>
                 </a>
               </li>
               <li>
-                <a href={`mailto:${siteInfo.email}`} className="flex items-center gap-4 group">
-                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-[var(--color-accent)] transition-colors">
-                    <Mail className="w-4 h-4 text-[var(--color-accent)] group-hover:text-white transition-colors" />
+                <a href={`mailto:${siteInfo.email}`} className="flex items-center gap-3 group">
+                  <div className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-accent transition-colors">
+                    <Mail className="w-3.5 h-3.5 text-accent group-hover:text-white transition-colors" />
                   </div>
-                  <span className="text-white/60 group-hover:text-white text-[0.95rem] transition-colors">
+                  <span className="text-white/60 group-hover:text-white text-[0.9rem] transition-colors font-medium">
                     {siteInfo.email}
                   </span>
                 </a>

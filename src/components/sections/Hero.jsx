@@ -13,14 +13,14 @@ const TRUST_AVATARS = [
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-[65svh] lg:min-h-[78svh] flex items-center overflow-hidden bg-linear-to-br from-[#1a3a4a] via-[#0d2733] to-[#1a3a4a]">
+    <section id="home" className="relative min-h-[65svh] lg:min-h-[78svh] flex items-center overflow-hidden bg-clinical-noise bg-linear-to-br from-[#1a3a4a] via-[#0d2733] to-[#1a3a4a]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/hero-bg.png"
           alt="Modern dental clinic interior"
           fill
-          className="object-cover opacity-35"
+          className="object-cover opacity-20"
           priority={true}
           sizes="100vw"
           quality={75}
@@ -28,7 +28,7 @@ export default function Hero() {
       </div>
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 z-1 bg-linear-to-br from-[rgba(13,39,51,0.85)] via-[rgba(26,58,74,0.7)] to-[rgba(79,195,247,0.2)]" />
+      <div className="absolute inset-0 z-1 bg-linear-to-br from-[rgba(13,39,51,0.85)] via-[rgba(26,58,74,0.7)] to-[rgba(79,195,247,0.2)] bg-radial-hero" />
 
       {/* Content */}
       <div className="relative z-2 max-w-[1200px] mx-auto px-6 w-full">
@@ -62,21 +62,21 @@ export default function Hero() {
           </div>
 
           {/* Heading */}
-          <ScrollReveal>
+          <ScrollReveal eager={true}>
             <h1 className="text-4xl md:text-6xl lg:text-[4.5rem] font-bold text-white mb-6 leading-[1.1] tracking-tight">
               Advanced Dental Excellence
             </h1>
           </ScrollReveal>
 
           {/* Subtitle */}
-          <ScrollReveal delay={100}>
-            <p className="text-white/85 text-base md:text-lg lg:text-[1.1rem] mb-8 lg:mb-10 max-w-[560px] leading-relaxed font-light">
+          <ScrollReveal eager={true} delay={80}>
+            <p className="text-white/85 text-base md:text-lg lg:text-[1.1rem] mb-8 lg:mb-10 max-w-[560px] leading-relaxed font-light text-pretty">
               Experience the perfect synthesis of advanced technology and compassionate care. We design smiles that inspire confidence and promote lifelong health.
             </p>
           </ScrollReveal>
 
           {/* Buttons */}
-          <ScrollReveal delay={200}>
+          <ScrollReveal eager={true} delay={160}>
             <div className="flex flex-col sm:flex-row gap-3">
               <a
                 href="#appointment"

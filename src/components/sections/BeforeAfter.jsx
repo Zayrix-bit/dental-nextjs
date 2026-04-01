@@ -216,10 +216,8 @@ export default function BeforeAfter() {
   }, [isPaused]);
 
   return (
-    <section id="gallery" className="py-10 md:py-16 bg-zinc-50 overflow-hidden relative">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-accent/5 rounded-full blur-[80px] pointer-events-none translate-y-1/2 -translate-x-1/3"></div>
+    <section id="gallery" className="py-10 md:py-16 bg-clinical overflow-hidden relative">
+      {/* Background Decor Removed for Minimalist Consistency */}
 
       <div className="max-w-[1240px] mx-auto relative z-10 w-full overflow-hidden">
         <ScrollReveal>

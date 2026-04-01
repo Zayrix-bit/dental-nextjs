@@ -223,7 +223,7 @@ export default function Contact({ className = "" }) {
 
   if (submitted) {
     return (
-      <section id="appointment" className="py-12 lg:py-20 bg-bg-section px-4">
+      <section id="appointment" className="py-12 lg:py-20 bg-clinical px-4">
         <div className={`max-w-md mx-auto bg-white rounded-3xl shadow-xl shadow-slate-200/60 border border-slate-100 p-10 flex flex-col items-center text-center animate-[fadeInUp_0.5s_ease] ${className}`}>
           <div className="w-16 h-16 rounded-full bg-emerald-50 border-2 border-emerald-100 flex items-center justify-center mb-6 text-emerald-500">
             <CheckCircleIcon />
@@ -247,8 +247,8 @@ export default function Contact({ className = "" }) {
   }
 
   return (
-    <section className="py-10 lg:py-16 bg-bg-section px-4 overflow-hidden">
-      <div className="max-w-[1000px] mx-auto px-4 md:px-6 mb-10 lg:mb-14 text-left">
+    <section className="py-10 lg:py-16 bg-clinical px-4 overflow-hidden">
+      <div className="max-w-[1240px] mx-auto px-4 md:px-6 relative z-10 mb-14 text-left">
         <h2 className="text-3xl sm:text-4xl lg:text-[3.25rem] font-bold text-text-dark leading-[1.1] tracking-tight mb-6">
           Schedule Your Private <span className="text-primary">Consultation.</span>
         </h2>

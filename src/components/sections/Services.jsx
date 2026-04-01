@@ -6,11 +6,9 @@ import Image from 'next/image';
 
 export default function Services({ isHomePage = false }) {
   return (
-    <section id="services" className="py-8 lg:py-12 bg-zinc-50 relative overflow-hidden">
-      {/* Decorative background blob */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        <div className="absolute -top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-primary/5 blur-[80px]"></div>
-      </div>
+    <section id="services" className="py-16 lg:py-24 bg-white relative overflow-hidden">
+      {/* Subtle Radial Glow */}
+      <div className="absolute inset-0 bg-radial-soft pointer-events-none" />
 
       <div className="max-w-[1200px] mx-auto px-4 md:px-6 relative z-10 w-full">
         <ScrollReveal>

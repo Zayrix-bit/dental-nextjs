@@ -4,10 +4,9 @@ import ScrollReveal from '@/components/ScrollReveal';
 
 export default function WhyChooseUs() {
   return (
-    <section id="about" className="flex items-center justify-center py-10 lg:py-16 bg-bg-section relative overflow-hidden">
-      {/* Subtle Abstract Background */}
-      <div className="absolute -top-[10%] -right-[5%] w-[40vw] h-[40vw] bg-secondary/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute -bottom-[10%] -left-[5%] w-[30vw] h-[30vw] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+    <section id="about" className="flex items-center justify-center py-10 lg:py-16 bg-clinical relative overflow-hidden">
+      {/* Subtle SVG Grid Pattern */}
+      <div className="absolute inset-0 bg-svg-grid pointer-events-none opacity-[0.8]" />
 
       <div className="max-w-[1200px] w-full mx-auto px-6 lg:px-8 relative z-10">
         <ScrollReveal>

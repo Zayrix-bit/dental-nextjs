@@ -13,12 +13,15 @@ export default function ScrollReveal({
   delay = 0, 
   className = '',
   scale = false,
-  once = true 
+  once = true,
+  eager = false
 }) {
   const ref = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(eager);
 
   useEffect(() => {
+    if (eager) return;
+
     const el = ref.current;
     if (!el) return;
 

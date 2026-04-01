@@ -35,8 +35,11 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-10 lg:py-16 bg-white px-4">
-      <div className="max-w-[1200px] mx-auto px-4 md:px-6">
+    <section id="faq" className="py-10 lg:py-16 bg-white px-4 relative overflow-hidden">
+      {/* Subtle Radial Glow */}
+      <div className="absolute inset-0 bg-radial-soft pointer-events-none" />
+      
+      <div className="max-w-[1240px] mx-auto px-4 md:px-6 relative z-10">
         {/* Header Section */}
         <div className="mb-10 lg:mb-14 max-w-3xl text-left">
           <h2 className="text-3xl sm:text-4xl lg:text-[3.25rem] font-bold text-text-dark leading-[1.1] tracking-tight mb-6">
