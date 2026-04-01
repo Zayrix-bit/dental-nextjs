@@ -177,13 +177,13 @@ export default function Header() {
         <Link
           href="/"
           onClick={closeMobile}
-          className={`relative z-[1001] flex items-center gap-2.5 text-xl lg:text-2xl font-black transition-all duration-300 ${
+          className={`relative z-[1001] flex items-center gap-2.5 text-2xl lg:text-2xl font-black transition-all duration-300 ${
             (effectiveScrolled && !mobileOpen) ? 'text-text-dark scale-95' : 'text-white'
           }`}
           aria-label={`${siteInfo.name} Home`}
         >
-          <div className="w-7.5 h-7.5 lg:w-8.5 lg:h-8.5 bg-linear-to-br from-accent to-primary rounded-full flex items-center justify-center shadow-lg shadow-accent/20">
-            <Activity className="w-4 h-4 lg:w-4.5 lg:h-4.5 text-white" strokeWidth={3} />
+          <div className="w-8.5 h-8.5 lg:w-8.5 lg:h-8.5 bg-linear-to-br from-accent to-primary rounded-full flex items-center justify-center shadow-lg shadow-accent/20">
+            <Activity className="w-5 h-5 lg:w-4.5 lg:h-4.5 text-white" strokeWidth={3} />
           </div>
           <span className="tracking-tighter">DentalCare</span>
         </Link>

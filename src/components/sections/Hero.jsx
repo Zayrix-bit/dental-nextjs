@@ -37,9 +37,6 @@ export default function Hero() {
           {/* Trust Badge & Avatars */}
           <div className="flex flex-wrap items-center gap-4 mb-6 lg:mb-8 animate-[fadeInUp_0.6s_ease]">
             {/* Badge */}
-            <div className="inline-flex items-center gap-1.5 bg-accent/20 border border-accent/40 px-4 py-1.5 rounded-full text-[0.75rem] font-bold text-accent backdrop-blur-md shadow-sm">
-              <Sparkles className="w-3.5 h-3.5" /> Premium Dental Care
-            </div>
 
             {/* Google Rating */}
             <div className="flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-1.5 rounded-full">
