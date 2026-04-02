@@ -55,22 +55,29 @@ A high-performance, agency-grade dental clinic website built with **Next.js 15**
 - **npm** 9+ (or yarn / pnpm)
 
 ### Installation
-
+1. Clone the repository
 ```bash
-# 1. Clone the repository
 git clone https://github.com/Zayrix-bit/dental-nextjs.git
+```
 
-# 2. Navigate to the project
+2. Navigate to the project
+```bash
 cd dental-nextjs
+```
 
-# 3. Install dependencies
+3. Install dependencies
+```bash
 npm install
+```
 
-# 4. Set up environment variables
+4. Set up environment variables
+```bash
 cp .env.example .env.local
-# Edit .env.local with your API keys (Resend, etc.)
+```
+*(Edit .env.local with your API keys)*
 
-# 5. Start the development server
+5. Start the development server
+```bash
 npm run dev
 ```
 
