@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { siteInfo, ALL_SERVICES, TIME_SLOTS } from "@/data/siteData";
+import ParallaxRing from '@/components/ui/ParallaxRing';
 
 /* ── Static Data ── */
 
@@ -249,8 +250,8 @@ export default function Contact({ className = "" }) {
   return (
     <section className="py-10 lg:py-16 bg-clinical relative overflow-hidden">
       {/* Lavender Donut Ring Accents */}
-      <div className="absolute -top-16 right-1/3 w-[300px] h-[300px] bg-donut-ring-lg pointer-events-none" />
-      <div className="absolute -bottom-20 -left-16 w-[350px] h-[350px] bg-donut-ring pointer-events-none" />
+      <ParallaxRing className="absolute -top-16 right-1/3 w-[300px] h-[300px]" ringStyle="bg-donut-ring-lg" speed={0.16} />
+      <ParallaxRing className="absolute -bottom-20 -left-16 w-[350px] h-[350px]" ringStyle="bg-donut-ring" speed={0.22} />
 
       <div className="w-full px-6 md:px-12 lg:px-20 xl:px-28 relative z-10 mb-14 text-left">
         <h2 className="text-3xl sm:text-4xl lg:text-[3.25rem] font-bold text-text-dark leading-[1.1] tracking-tight mb-6">

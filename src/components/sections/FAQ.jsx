@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Plus, MessageCircle } from "lucide-react";
 import { siteInfo, faqData } from "@/data/siteData";
 import config from "@/config";
+import ParallaxRing from '@/components/ui/ParallaxRing';
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -16,8 +17,8 @@ export default function FAQ() {
     <section id="faq" className="py-10 lg:py-16 bg-white relative overflow-hidden">
       {/* Subtle Background Patterns */}
       <div className="absolute inset-0 bg-dot-mesh pointer-events-none opacity-40" />
-      <div className="absolute -bottom-20 -right-20 w-[320px] h-[320px] bg-donut-ring pointer-events-none" />
-      <div className="absolute top-8 -left-16 w-[300px] h-[300px] bg-donut-ring-lg pointer-events-none" />
+      <ParallaxRing className="absolute -bottom-20 -right-20 w-[320px] h-[320px]" ringStyle="bg-donut-ring" speed={0.14} />
+      <ParallaxRing className="absolute top-8 -left-16 w-[300px] h-[300px]" ringStyle="bg-donut-ring-lg" speed={0.2} />
       <div className="absolute inset-0 bg-radial-soft pointer-events-none" />
       
       <div className="w-full px-6 md:px-12 lg:px-20 xl:px-28 relative z-10">

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { testimonials } from '@/data/siteData';
 import ScrollReveal from '@/components/ScrollReveal';
+import ParallaxRing from '@/components/ui/ParallaxRing';
 
 export default function Testimonials() {
 
@@ -8,8 +9,8 @@ export default function Testimonials() {
     <section id="testimonials" className="py-16 lg:py-24 bg-bg-light relative overflow-hidden">
       {/* Premium Background Layer */}
       <div className="absolute inset-0 bg-abstract-waves pointer-events-none bg-clinical-noise" />
-      <div className="absolute top-1/4 -right-20 w-[300px] h-[300px] bg-donut-ring pointer-events-none" />
-      <div className="absolute -bottom-20 left-10 w-[350px] h-[350px] bg-donut-ring-lg pointer-events-none" />
+      <ParallaxRing className="absolute top-1/4 -right-20 w-[300px] h-[300px]" ringStyle="bg-donut-ring" speed={0.15} />
+      <ParallaxRing className="absolute -bottom-20 left-10 w-[350px] h-[350px]" ringStyle="bg-donut-ring-lg" speed={0.22} />
       <div className="w-full px-6 md:px-12 lg:px-20 xl:px-28">
         <ScrollReveal>
           <div className="max-w-3xl mb-16 md:mb-20 text-left">

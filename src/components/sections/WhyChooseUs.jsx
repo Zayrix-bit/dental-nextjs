@@ -3,13 +3,15 @@ import { features } from '@/data/siteData';
 import config from '@/config';
 import ScrollReveal from '@/components/ScrollReveal';
 
+import ParallaxRing from '@/components/ui/ParallaxRing';
+
 export default function WhyChooseUs() {
   return (
     <section id="about" className="py-10 lg:py-16 bg-clinical relative overflow-hidden">
       {/* Subtle Background Patterns */}
       <div className="absolute inset-0 bg-svg-grid pointer-events-none opacity-40" />
-      <div className="absolute -bottom-16 -right-16 w-[320px] h-[320px] bg-donut-ring-lg pointer-events-none" />
-      <div className="absolute -top-20 left-1/3 w-[280px] h-[280px] bg-donut-ring pointer-events-none" />
+      <ParallaxRing className="absolute -bottom-16 -right-16 w-[320px] h-[320px]" ringStyle="bg-donut-ring-lg" speed={0.2} />
+      <ParallaxRing className="absolute -top-20 left-1/3 w-[280px] h-[280px]" ringStyle="bg-donut-ring" speed={0.1} />
 
       <div className="w-full px-6 md:px-12 lg:px-20 xl:px-28 relative z-10">
         <ScrollReveal>

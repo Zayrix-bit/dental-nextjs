@@ -1,4 +1,5 @@
 import { siteInfo } from "@/data/siteData";
+import ParallaxRing from '@/components/ui/ParallaxRing';
 
 const MapPinIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-[16px] h-[16px] lg:w-[18px] lg:h-[18px] stroke-accent">
@@ -33,8 +34,8 @@ export default function LocationMap({ className = "" }) {
   return (
     <section className={`py-10 lg:py-16 bg-white relative overflow-hidden ${className}`}>
       {/* Lavender Donut Ring Accents */}
-      <div className="absolute top-1/3 -left-20 w-[320px] h-[320px] bg-donut-ring pointer-events-none" />
-      <div className="absolute -top-20 -right-16 w-[280px] h-[280px] bg-donut-ring-lg pointer-events-none" />
+      <ParallaxRing className="absolute top-1/3 -left-20 w-[320px] h-[320px]" ringStyle="bg-donut-ring" speed={0.18} />
+      <ParallaxRing className="absolute -top-20 -right-16 w-[280px] h-[280px]" ringStyle="bg-donut-ring-lg" speed={0.1} />
 
       <div className="w-full px-6 md:px-12 lg:px-20 xl:px-28 overflow-hidden relative z-10">
         

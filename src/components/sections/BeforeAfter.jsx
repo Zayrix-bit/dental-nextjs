@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import ParallaxRing from '@/components/ui/ParallaxRing';
 import { Star, ArrowRight } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
 import { galleryData } from '@/data/siteData';
@@ -192,8 +193,8 @@ export default function BeforeAfter() {
   return (
     <section id="gallery" className="py-10 md:py-16 bg-clinical overflow-hidden relative">
       {/* Premium Background Accents */}
-      <div className="absolute -top-16 -left-16 w-[340px] h-[340px] bg-donut-ring-lg pointer-events-none" />
-      <div className="absolute -bottom-24 right-1/4 w-[280px] h-[280px] bg-donut-ring pointer-events-none" />
+      <ParallaxRing className="absolute -top-16 -left-16 w-[340px] h-[340px]" ringStyle="bg-donut-ring-lg" speed={0.18} />
+      <ParallaxRing className="absolute -bottom-24 right-1/4 w-[280px] h-[280px]" ringStyle="bg-donut-ring" speed={0.12} />
 
       <div className="w-full px-6 md:px-12 lg:px-20 xl:px-28 relative z-10 overflow-hidden">
         <ScrollReveal>
