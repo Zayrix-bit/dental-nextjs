@@ -21,13 +21,13 @@ export default function FAQ() {
       <ParallaxRing className="absolute top-8 -left-16 w-[300px] h-[300px]" ringStyle="bg-donut-ring-lg" speed={0.2} />
       <div className="absolute inset-0 bg-radial-soft pointer-events-none" />
       
-      <div className="w-full px-6 md:px-12 lg:px-20 xl:px-28 relative z-10">
+      <div className="w-full max-w-4xl mx-auto px-6 relative z-10">
         {/* Header Section */}
-        <div className="mb-10 lg:mb-14 max-w-3xl text-left">
+        <div className="mb-10 lg:mb-14 text-center">
           <h2 className="text-3xl sm:text-4xl lg:text-[3.25rem] font-bold text-text-dark leading-[1.1] tracking-tight mb-6">
             {config.faq.heading} <span className="text-primary">{config.faq.headingAccent}</span>
           </h2>
-          <p className="text-slate-500 text-[0.9rem] md:text-[1rem] leading-relaxed font-medium mb-8 max-w-2xl">
+          <p className="text-slate-500 text-[0.9rem] md:text-[1rem] leading-relaxed font-medium mb-8 max-w-2xl mx-auto">
             {config.faq.subtitle}
           </p>
         </div>
