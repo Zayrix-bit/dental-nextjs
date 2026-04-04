@@ -263,7 +263,7 @@ export default function Contact({ className = "" }) {
         className={`scroll-mt-5 max-w-[1000px] mx-auto grid grid-cols-1 lg:grid-cols-[320px_1fr] bg-white rounded-3xl overflow-hidden shadow-2xl shadow-slate-200/50 border border-slate-100 transition-all duration-500 ${className}`}
       >
 
-        <aside className="relative bg-linear-to-br from-primary to-primary-dark p-8 flex flex-col">
+        <aside className="relative bg-linear-to-br from-primary to-primary-dark p-8 flex flex-col overflow-hidden">
           <div className="absolute -bottom-20 -right-20 w-48 h-48 rounded-full bg-accent opacity-20 blur-[50px] pointer-events-none" />
 
           <h3 className="relative z-10 text-2xl lg:text-[26px] font-black text-white leading-tight mb-3">
@@ -314,7 +314,7 @@ export default function Contact({ className = "" }) {
           </div>
         </aside>
 
-        <form className="p-8 lg:p-10 flex flex-col gap-5" onSubmit={handleSubmit} noValidate>
+        <form className="p-8 lg:p-10 flex flex-col gap-5 bg-white relative z-10" onSubmit={handleSubmit} noValidate>
           {apiError && (
             <div className="bg-red-50 text-red-800 text-[13px] font-bold px-4 py-3 rounded-xl border-l-4 border-red-500 mb-2 shadow-sm">
               {apiError}
