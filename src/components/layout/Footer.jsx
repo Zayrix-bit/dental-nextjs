@@ -1,15 +1,9 @@
-import { 
-  Activity, 
-  MapPin, 
-  Phone, 
-  Mail, 
-  ArrowRight 
-} from 'lucide-react';
+import { Activity, MapPin, Phone, Mail, ArrowRight, Clock } from 'lucide-react';
 import { siteInfo, footerQuickLinks, services } from '@/data/siteData';
 import config from '@/config';
 import Link from 'next/link';
-import ScrollReveal from '@/components/ScrollReveal';
 
+/* ── Inline SVG Social Icons ── */
 const FacebookIcon = ({ className }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
     <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
@@ -30,171 +24,185 @@ const TwitterIcon = ({ className }) => (
   </svg>
 );
 
+/* ── Footer Section Title ── */
+const FooterTitle = ({ children }) => (
+  <h4 className="text-[0.7rem] font-bold tracking-[0.15em] uppercase text-white/40 mb-4 lg:mb-5">
+    {children}
+  </h4>
+);
+
+/* ── Footer Link Item ── */
+const FooterLink = ({ href, children }) => (
+  <li>
+    <Link
+      href={href}
+      className="text-[0.85rem] lg:text-[0.9rem] text-white/55 hover:text-white transition-colors duration-200 leading-none"
+    >
+      {children}
+    </Link>
+  </li>
+);
+
 export default function Footer() {
   const year = new Date().getFullYear();
+  const topServices = services.slice(0, 5);
 
   return (
-    <footer className="relative bg-[#051117] text-white/80 overflow-hidden border-t border-white/5 pt-10 lg:pt-14">
-      {/* Background Subtle Glows */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[var(--color-primary)]/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[var(--color-accent)]/10 rounded-full blur-[120px] pointer-events-none" />
+    <footer className="relative bg-[#060d12] text-white/80 overflow-hidden">
 
-      {/* Main Container */}
-      <div className="max-w-[1200px] mx-auto px-6 pb-8 lg:pb-12 relative z-10">
-        
-        {/* Top CTA Row */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b border-white/10 pb-7 mb-7 lg:pb-10 lg:mb-10 gap-5 lg:gap-8">
+      {/* ── Ambient Background Glows ── */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/8 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-accent/6 rounded-full blur-[140px] pointer-events-none" />
+
+      {/* ═══════════════════════════════════════════
+          TOP CTA BANNER
+          ═══════════════════════════════════════════ */}
+      <div className="relative z-10 border-b border-white/[0.06]">
+        <div className="max-w-[1200px] mx-auto px-6 py-8 lg:py-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5 lg:gap-8">
           <div>
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-white mb-2 lg:mb-3">
+            <h3 className="text-lg sm:text-xl lg:text-2xl font-bold tracking-tight text-white mb-1.5 lg:mb-2">
               {config.footer.ctaHeading}
             </h3>
-            <p className="text-white/60 max-w-md text-[0.95rem] leading-relaxed">
+            <p className="text-white/45 text-[0.85rem] lg:text-[0.9rem] max-w-md leading-relaxed">
               {config.footer.ctaDescription}
             </p>
           </div>
-          <div className="shrink-0 flex items-center gap-4">
-            <Link 
-              href="#appointment" 
-              className="group relative inline-flex items-center justify-center px-8 py-3.5 bg-white text-[#051117] font-bold rounded-full overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_rgba(255,255,255,0.1)] text-sm"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-white opacity-0 group-hover:opacity-100 transition-opacity" />
-              <span className="relative z-10 flex items-center gap-2">
-                Book Appointment
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          <Link
+            href="#appointment"
+            className="group shrink-0 inline-flex items-center gap-2 px-6 lg:px-7 py-3 bg-white text-[#060d12] font-bold rounded-full text-[0.8rem] lg:text-[0.85rem] hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-[0_0_30px_rgba(255,255,255,0.06)]"
+          >
+            Book Appointment
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+          </Link>
+        </div>
+      </div>
+
+      {/* ═══════════════════════════════════════════
+          MAIN FOOTER GRID
+          ═══════════════════════════════════════════ */}
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6 pt-10 pb-8 lg:pt-14 lg:pb-10">
+        <div className="grid grid-cols-2 lg:grid-cols-12 gap-x-6 gap-y-8 lg:gap-8">
+
+          {/* ── Brand Column ── */}
+          <div className="col-span-2 lg:col-span-4">
+            <Link href="/" className="inline-flex items-center gap-2.5 mb-4 lg:mb-5 group">
+              <div className="w-8 h-8 bg-linear-to-br from-accent to-primary rounded-lg flex items-center justify-center shrink-0">
+                <Activity className="w-4 h-4 text-white" strokeWidth={2.5} />
+              </div>
+              <span className="text-lg font-bold text-white tracking-tight">
+                {siteInfo.name}<span className="text-accent">.</span>
               </span>
             </Link>
-          </div>
-        </div>
-        
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-12 gap-x-6 gap-y-8 lg:gap-8">
-          
-          {/* Brand Column */}
-          <ScrollReveal className="col-span-2 lg:col-span-4">
-            <Link href="/" className="flex items-center gap-3 text-xl font-bold text-white mb-4 lg:mb-6 group inline-flex">
-              <div className="w-9 h-9 bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-primary)] rounded-full flex items-center justify-center relative overflow-hidden shrink-0">
-                <Activity className="w-5 h-5 text-white relative z-10" strokeWidth={2} />
-                <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <span className="tracking-tight">{siteInfo.name}<span className="text-accent">.</span></span>
-            </Link>
-            <p className="text-white/50 text-[0.85rem] lg:text-[0.9rem] leading-relaxed mb-4 lg:mb-6 max-w-sm">
+            <p className="text-white/40 text-[0.8rem] lg:text-[0.85rem] leading-relaxed max-w-[300px] mb-5 lg:mb-6">
               {config.brandDescription}
             </p>
-            {/* Social Links */}
-            <div className="flex items-center gap-3">
-              <a href={config.social.facebook} className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all duration-300 group">
-                <FacebookIcon className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
-              </a>
-              <a href={config.social.instagram} className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all duration-300 group">
-                <InstagramIcon className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
-              </a>
-              <a href={config.social.twitter} className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all duration-300 group">
-                <TwitterIcon className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
-              </a>
+            {/* Social Icons */}
+            <div className="flex items-center gap-2">
+              {[
+                { Icon: FacebookIcon, href: config.social.facebook },
+                { Icon: InstagramIcon, href: config.social.instagram },
+                { Icon: TwitterIcon, href: config.social.twitter },
+              ].map(({ Icon, href }, i) => (
+                <a
+                  key={i}
+                  href={href}
+                  aria-label="Social media"
+                  className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-white/35 hover:text-white hover:bg-white/[0.08] hover:border-white/[0.12] transition-all duration-200"
+                >
+                  <Icon className="w-3.5 h-3.5" />
+                </a>
+              ))}
             </div>
-          </ScrollReveal>
+          </div>
 
-          {/* Navigation */}
-          <ScrollReveal delay={100} className="col-span-1 lg:col-span-2 lg:col-start-6">
-            <h4 className="text-white text-[13px] font-bold mb-3 lg:mb-5 tracking-widest uppercase mt-1 opacity-90">Explore</h4>
-            <ul className="space-y-2.5 lg:space-y-3.5">
+          {/* ── Quick Links ── */}
+          <div className="col-span-1 lg:col-span-2 lg:col-start-6">
+            <FooterTitle>Explore</FooterTitle>
+            <ul className="space-y-2.5 lg:space-y-3">
               {footerQuickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="group flex items-center gap-2 text-white/50 hover:text-white text-[0.9rem] transition-colors"
-                  >
-                    <span className="w-0 h-[1px] bg-accent group-hover:w-3 transition-all duration-300 opacity-0 group-hover:opacity-100" />
-                    <span className="group-hover:translate-x-1 transition-transform duration-300 font-medium">
-                      {link.label}
-                    </span>
-                  </Link>
-                </li>
+                <FooterLink key={link.href} href={link.href}>
+                  {link.label}
+                </FooterLink>
               ))}
             </ul>
-          </ScrollReveal>
+          </div>
 
-          {/* Services */}
-          <ScrollReveal delay={200} className="col-span-1 lg:col-span-2">
-            <h4 className="text-white text-[13px] font-bold mb-3 lg:mb-5 tracking-widest uppercase mt-1 opacity-90">Services</h4>
-            <ul className="space-y-2.5 lg:space-y-3.5">
-              {services.slice(0, 5).map((s) => (
-                <li key={s.id}>
-                  <Link
-                    href="/services"
-                    className="group flex items-center gap-2 text-white/50 hover:text-white text-[0.9rem] transition-colors"
-                  >
-                    <span className="w-0 h-[1px] bg-accent group-hover:w-3 transition-all duration-300 opacity-0 group-hover:opacity-100" />
-                    <span className="group-hover:translate-x-1 transition-transform duration-300 font-medium">
-                      {s.title}
-                    </span>
-                  </Link>
-                </li>
+          {/* ── Services ── */}
+          <div className="col-span-1 lg:col-span-2">
+            <FooterTitle>Services</FooterTitle>
+            <ul className="space-y-2.5 lg:space-y-3">
+              {topServices.map((s) => (
+                <FooterLink key={s.id} href="/services">
+                  {s.title}
+                </FooterLink>
               ))}
             </ul>
-          </ScrollReveal>
+          </div>
 
-          {/* Contact */}
-          <ScrollReveal delay={300} className="col-span-2 lg:col-span-3">
-            <h4 className="text-white text-[13px] font-bold mb-3 lg:mb-5 tracking-widest uppercase mt-1 opacity-90">Connect</h4>
-            <ul className="space-y-3 lg:space-y-4">
+          {/* ── Contact ── */}
+          <div className="col-span-2 lg:col-span-3">
+            <FooterTitle>Contact</FooterTitle>
+            <ul className="space-y-3 lg:space-y-3.5">
               <li>
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center shrink-0">
-                    <MapPin className="w-3.5 h-3.5 text-accent" />
+                <a href={`tel:${siteInfo.phoneRaw}`} className="inline-flex items-center gap-2.5 group">
+                  <div className="w-7 h-7 rounded-lg bg-white/[0.04] flex items-center justify-center shrink-0 group-hover:bg-accent/20 transition-colors">
+                    <Phone className="w-3 h-3 text-accent" />
                   </div>
-                  <span className="text-white/60 text-[0.9rem] leading-relaxed pt-1.5 font-medium">
-                    {siteInfo.address.street}
-                    <br />
-                    {siteInfo.address.city}
-                  </span>
-                </div>
-              </li>
-              <li>
-                <a href={`tel:${siteInfo.phoneRaw}`} className="flex items-center gap-3 group">
-                  <div className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-accent transition-colors">
-                    <Phone className="w-3.5 h-3.5 text-accent group-hover:text-white transition-colors" />
-                  </div>
-                  <span className="text-white/60 group-hover:text-white text-[0.9rem] transition-colors font-semibold">
+                  <span className="text-[0.85rem] text-white/55 group-hover:text-white transition-colors font-medium">
                     {siteInfo.phone}
                   </span>
                 </a>
               </li>
               <li>
-                <a href={`mailto:${siteInfo.email}`} className="flex items-center gap-3 group">
-                  <div className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-accent transition-colors">
-                    <Mail className="w-3.5 h-3.5 text-accent group-hover:text-white transition-colors" />
+                <a href={`mailto:${siteInfo.email}`} className="inline-flex items-center gap-2.5 group">
+                  <div className="w-7 h-7 rounded-lg bg-white/[0.04] flex items-center justify-center shrink-0 group-hover:bg-accent/20 transition-colors">
+                    <Mail className="w-3 h-3 text-accent" />
                   </div>
-                  <span className="text-white/60 group-hover:text-white text-[0.9rem] transition-colors font-medium">
+                  <span className="text-[0.85rem] text-white/55 group-hover:text-white transition-colors font-medium">
                     {siteInfo.email}
                   </span>
                 </a>
               </li>
+              <li>
+                <div className="inline-flex items-start gap-2.5">
+                  <div className="w-7 h-7 rounded-lg bg-white/[0.04] flex items-center justify-center shrink-0 mt-0.5">
+                    <MapPin className="w-3 h-3 text-accent" />
+                  </div>
+                  <span className="text-[0.85rem] text-white/45 leading-relaxed">
+                    {siteInfo.address.street}<br />
+                    {siteInfo.address.city}
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div className="inline-flex items-center gap-2.5">
+                  <div className="w-7 h-7 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                    <Clock className="w-3 h-3 text-accent" />
+                  </div>
+                  <span className="text-[0.85rem] text-accent font-medium">
+                    {siteInfo.hours.emergency}
+                  </span>
+                </div>
+              </li>
             </ul>
-            
-            <div className="mt-5 pt-4 lg:mt-8 lg:pt-6 border-t border-white/10">
-              <p className="text-white/40 text-[0.85rem] mb-1">Emergency Care</p>
-              <p className="text-[var(--color-accent)] font-medium text-[0.95rem]">
-                {siteInfo.hours.emergency}
-              </p>
-            </div>
-          </ScrollReveal>
+          </div>
         </div>
       </div>
 
-      {/* Bottom Legal Bar */}
-      <div className="border-t border-white/5 bg-black/20">
-        <div className="max-w-[1200px] mx-auto px-6 py-4 lg:py-6 flex flex-col md:flex-row justify-between items-center gap-3 lg:gap-4">
-          <p className="text-white/40 text-[0.85rem]">
-            © {year} {siteInfo.name} Clinic. All rights reserved.
+      {/* ═══════════════════════════════════════════
+          BOTTOM BAR
+          ═══════════════════════════════════════════ */}
+      <div className="relative z-10 border-t border-white/[0.06]">
+        <div className="max-w-[1200px] mx-auto px-6 py-4 lg:py-5 flex flex-col sm:flex-row justify-between items-center gap-2.5">
+          <p className="text-white/30 text-[0.75rem] lg:text-[0.8rem]">
+            © {year} {siteInfo.name}. All rights reserved.
           </p>
-          <div className="flex items-center gap-6 text-[0.85rem]">
-            <Link href="/privacy" className="text-white/40 hover:text-white transition-colors">
-              Privacy Policy
+          <div className="flex items-center gap-5 text-[0.75rem] lg:text-[0.8rem]">
+            <Link href="/privacy" className="text-white/30 hover:text-white/60 transition-colors">
+              Privacy
             </Link>
-            <Link href="/terms" className="text-white/40 hover:text-white transition-colors">
-              Terms of Service
+            <Link href="/terms" className="text-white/30 hover:text-white/60 transition-colors">
+              Terms
             </Link>
           </div>
         </div>
