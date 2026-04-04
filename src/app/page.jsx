@@ -42,7 +42,7 @@ export default function Home() {
       <Header />
       <Hero />
       <main>
-        <Services />
+        <Services isHomePage={true} />
         <WhyChooseUs />
         <Testimonials />
         <BeforeAfter />
