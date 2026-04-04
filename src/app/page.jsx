@@ -6,7 +6,7 @@ import WhyChooseUs from '@/components/sections/WhyChooseUs';
 import FAQ from '@/components/sections/FAQ';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
-import WhatsAppButton from '@/components/ui/WhatsAppButton';
+
 
 import {
   TestimonialsSkeleton,
@@ -51,7 +51,7 @@ export default function Home() {
         <LocationMap />
       </main>
       <Footer />
-      <WhatsAppButton />
+
     </>
   );
 }

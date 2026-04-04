@@ -3,7 +3,7 @@ import PageHeader from '@/components/ui/PageHeader';
 import Services from '@/components/sections/Services';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
-import WhatsAppButton from '@/components/ui/WhatsAppButton';
+
 
 export const metadata = {
   title: config.pages.services.title,
@@ -27,7 +27,7 @@ export default function ServicesPage() {
         </div>
       </main>
       <Footer />
-      <WhatsAppButton />
+
     </>
   );
 }

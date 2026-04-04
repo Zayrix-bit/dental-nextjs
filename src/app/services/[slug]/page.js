@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import WhatsAppButton from '@/components/ui/WhatsAppButton';
+
 import ScrollReveal from '@/components/ScrollReveal';
 
 export async function generateStaticParams() {
@@ -302,7 +302,7 @@ export default async function TreatmentPage({ params }) {
       </main>
       
       <Footer />
-      <WhatsAppButton />
+
     </>
   );
 }

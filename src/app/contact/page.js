@@ -4,7 +4,7 @@ import ExtendedContact from '@/components/sections/ExtendedContact';
 import LocationMap from '@/components/sections/LocationMap';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
-import WhatsAppButton from '@/components/ui/WhatsAppButton';
+
 
 export const metadata = {
   title: config.pages.contact.title,
@@ -29,7 +29,7 @@ export default function ContactPage() {
         <LocationMap />
       </main>
       <Footer />
-      <WhatsAppButton />
+
     </>
   );
 }
