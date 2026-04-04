@@ -446,10 +446,14 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
   100% { width: 100%; opacity: 1; }
 }
 
-@keyframes progress-shimmer-flow {
-  0% { transform: translateX(-150%); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translateX(250%); opacity: 0; }
+@keyframes progress-sweep-bidirectional {
+  0% { transform: translateX(-100%); opacity: 0.4; }
+  50% { transform: translateX(200%); opacity: 1; }
+  100% { transform: translateX(-100%); opacity: 0.4; }
+}
+
+.animate-progress-sweep {
+  animation: progress-sweep-bidirectional 0.6s ease-in-out forwards;
 }
 
 .animate-heartbeat-draw {
@@ -475,13 +479,13 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 
 @keyframes preloader-pop-in-out {
   0% { transform: scale(0.5); opacity: 0; filter: blur(10px); }
-  18% { transform: scale(1.06); opacity: 1; filter: blur(0px); }
-  35% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(0.98); opacity: 1; }
+  20% { transform: scale(1.06); opacity: 1; filter: blur(0px); }
+  40% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 .animate-logo-pop {
-  animation: preloader-pop-in-out 3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: preloader-pop-in-out 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @keyframes logo-pop-out {

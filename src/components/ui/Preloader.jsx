@@ -16,7 +16,7 @@ export default function Preloader() {
         setLoading(false);
       }, 600); // Matches the 0.6s animation duration in globals.css
       return () => clearTimeout(removeTimer);
-    }, 1200);
+    }, 600);
 
     // Prevent scrolling while loading
     if (loading) {
@@ -51,23 +51,20 @@ export default function Preloader() {
             className="text-white"
           >
             {/* Heartbeat flow animation */}
-            <path 
-              d="M22 12h-4l-3 9L9 3l-3 9H2" 
+            <path
+              d="M22 12h-4l-3 9L9 3l-3 9H2"
               className="animate-heartbeat-draw"
             />
           </svg>
         </div>
       </div>
 
-      {/* Progress Line Container (now more compact) */}
-      <div className="w-64 max-w-[85vw] h-[6px] bg-slate-100/80 rounded-full overflow-hidden relative shadow-inner">
-        {/* Main Gradient Fill (now faster) */}
-        <div className="absolute top-0 left-0 h-full bg-linear-to-r from-accent to-primary rounded-full animate-progress-fill overflow-hidden text-linear-shimmer">
-          {/* Shimmer Overlay */}
-          <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/40 to-transparent w-2/3 animate-progress-shimmer" />
-          
-          {/* Glow Tip (trailing edge highlight) */}
-          <div className="absolute right-0 top-0 h-full w-4 bg-white/40 blur-sm" />
+      {/* Progress Line Container (Compact & Bold) */}
+      <div className="w-64 max-w-[85vw] h-[6px] bg-slate-100/90 rounded-full overflow-hidden relative shadow-inner">
+        {/* Bidirectional Sweeping Segment (Matches Book Now Button) */}
+        <div className="absolute top-0 left-0 h-full w-1/2 bg-primary rounded-full animate-progress-sweep shadow-[0_0_15px_rgba(10,58,92,0.25)]">
+          {/* Subtle Shimmer for texture */}
+          <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent w-full" />
         </div>
       </div>
     </div>
