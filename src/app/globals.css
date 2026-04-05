@@ -12,8 +12,8 @@
   --color-bg-light: #FFFFFF;
   --color-bg-section: #F8FAFC;
   --color-destructive: #EF4444;
-  --font-family-heading: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-family-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-family-heading: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  --font-family-body: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
 
 /* ====== Base Styles ====== */

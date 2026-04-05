@@ -1,18 +1,9 @@
 import { siteInfo } from '@/data/siteData';
 import config from '@/config';
-import { Roboto } from 'next/font/google';
 import './globals.css';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-
-const roboto = Roboto({
-  weight: ['400', '500', '700'],
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-roboto',
-});
 
 export const metadata = {
   metadataBase: new URL(config.seo.metadataBase),
@@ -85,11 +76,11 @@ export default function RootLayout({ children }) {
   };
 
   return (
-    <html lang="en" className={roboto.variable} data-scroll-behavior="smooth">
+    <html lang="en" data-scroll-behavior="smooth">
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
-      <body className={roboto.className}>
+      <body>
         {/* Global Background Accents */}
         <div className="fixed inset-0 bg-abstract-waves pointer-events-none -z-10" />
         <Preloader />
