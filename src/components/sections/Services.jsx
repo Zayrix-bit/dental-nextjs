@@ -64,7 +64,7 @@ export default function Services({ isHomePage = false }) {
                   <div className="h-full bg-white rounded-[20px] md:rounded-[24px] border border-slate-100 shadow-[0_4px_24px_rgba(0,0,0,0.02)] transition-all duration-500 flex flex-col overflow-hidden hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1">
                     
                     {/* Image Area (Dominant Hero) */}
-                    <div className="relative w-full aspect-video overflow-hidden bg-slate-50">
+                    <div className="relative w-full aspect-video overflow-hidden bg-slate-50 z-0">
                       <Image
                         src={service.image}
                         alt={service.altText || service.title}
@@ -73,11 +73,26 @@ export default function Services({ isHomePage = false }) {
                         sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 33vw"
                         priority={idx < 2}
                       />
+                      {/* Premium Subtle Gradient */}
                       <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/5 to-transparent opacity-40" />
+                      
+                      {/* Refined Curved Transition SVG (Premium Balanced Curve) */}
+                      <div className="absolute -bottom-[1px] left-0 w-full overflow-hidden leading-[0] z-10 pointer-events-none">
+                        <svg 
+                          viewBox="0 0 100 20" 
+                          preserveAspectRatio="none" 
+                          className="w-full h-4 lg:h-6"
+                        >
+                          <path 
+                            d="M0 20 C 25 10 75 10 100 20 V 20 H 0 Z" 
+                            fill="white"
+                          />
+                        </svg>
+                      </div>
                     </div>
 
-                    {/* Content Area (Generous Spacing) */}
-                    <div className="p-4 sm:p-6 md:p-8 flex flex-col grow">
+                    {/* Content Area (Refined Spacing) */}
+                    <div className="px-6 pb-6 pt-6 sm:px-8 sm:pb-8 sm:pt-10 relative z-20 flex flex-col grow bg-white">
                       
                       {/* Category Label (Small + Subtle) */}
                       <span className="text-[8px] sm:text-[10px] lg:text-xs font-bold tracking-[0.2em] uppercase text-slate-400 mb-2 sm:mb-3">
