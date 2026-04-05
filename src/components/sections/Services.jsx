@@ -77,7 +77,7 @@ export default function Services({ isHomePage = false }) {
                       <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/5 to-transparent opacity-40" />
                       
                       {/* Refined Curved Transition SVG (Premium Balanced Curve) */}
-                      <div className="absolute -bottom-[1px] left-0 w-full overflow-hidden leading-[0] z-10 pointer-events-none">
+                      <div className="absolute -bottom-px left-0 w-full overflow-hidden leading-0 z-10 pointer-events-none">
                         <svg 
                           viewBox="0 0 100 20" 
                           preserveAspectRatio="none" 
