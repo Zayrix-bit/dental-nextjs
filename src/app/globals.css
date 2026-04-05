@@ -475,8 +475,8 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 }
 
 @keyframes preloader-fade-out {
-  from { opacity: 1; backdrop-filter: blur(12px); }
-  to { opacity: 0; backdrop-filter: blur(0px); visibility: hidden; }
+  from { opacity: 1; }
+  to { opacity: 0; visibility: hidden; }
 }
 
 @keyframes progress-horizontal {
@@ -487,13 +487,13 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 }
 
 @keyframes progress-sweep-bidirectional {
-  0% { transform: translateX(-100%); opacity: 0.4; }
-  50% { transform: translateX(200%); opacity: 1; }
-  100% { transform: translateX(-100%); opacity: 0.4; }
+  0% { transform: translateX(-100%); opacity: 0.3; }
+  50% { transform: translateX(100%); opacity: 1; }
+  100% { transform: translateX(-100%); opacity: 0.3; }
 }
 
 .animate-progress-sweep {
-  animation: progress-sweep-bidirectional 0.6s ease-in-out forwards;
+  animation: progress-sweep-bidirectional 1.5s ease-in-out infinite;
 }
 
 .animate-heartbeat-draw {
@@ -518,9 +518,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 }
 
 @keyframes preloader-pop-in-out {
-  0% { transform: scale(0.5); opacity: 0; filter: blur(10px); }
-  20% { transform: scale(1.06); opacity: 1; filter: blur(0px); }
-  40% { transform: scale(1); opacity: 1; }
+  0% { transform: scale(0.9); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }
 }
 
@@ -529,8 +527,8 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 }
 
 @keyframes logo-pop-out {
-  0% { transform: scale(1); opacity: 1; filter: blur(0px); }
-  100% { transform: scale(0.8); opacity: 0; filter: blur(5px); }
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0; }
 }
 
 .animate-logo-pop-out {

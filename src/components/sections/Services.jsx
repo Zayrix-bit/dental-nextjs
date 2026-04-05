@@ -49,106 +49,70 @@ export default function Services({ isHomePage = false }) {
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 mt-6 lg:mt-10">
+        <div className={`grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8 lg:gap-10 mt-12 pb-10`}>
           {[...services]
+            .filter(s => !isHomePage || (s.id !== 'pediatric' && s.id !== 'root-canal'))
             .sort((a, b) => (b.isHighlighted ? 1 : 0) - (a.isHighlighted ? 1 : 0))
+            .slice(0, isHomePage ? 6 : undefined)
             .map((service, idx) => (
               <ScrollReveal
                 key={service.id || service.slug || service.title}
-                delay={(idx % 4) * 80}
-                className={`h-full ${isHomePage && idx >= 6 ? 'hidden lg:block' : ''}`}
+                delay={(idx % 3) * 100}
+                className="h-full"
               >
-                <Link href={`/services/${service.slug}`} className="block h-full outline-none">
-                  <div className={`h-full bg-white rounded-xl sm:rounded-2xl transition-all duration-500 relative group flex flex-col hover:-translate-y-1.5 ${service.isHighlighted
-                    ? 'shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.16)] border border-primary/30 hover:border-primary/60'
-                    : 'shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_15px_35px_rgb(0,0,0,0.08)] border border-slate-100/80 hover:border-slate-200'
-                    }`} style={{ overflow: 'hidden' }}>
-
-                    {/* Subtle Gradient Hover */}
-                    <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10"></div>
-
-                    {/* Priority Badge */}
-                    {service.isHighlighted && (
-                      <div className="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 z-30 flex items-center gap-1.5 bg-white text-primary px-2.5 py-1 rounded-md sm:rounded-lg text-[9px] sm:text-[11px] font-black tracking-tighter uppercase shadow-md border border-slate-100">
-                        <Star className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 fill-primary" />
-                        MOST POPULAR
-                      </div>
-                    )}
-
-                    {/* Image Area */}
-                    <div className="relative w-full aspect-16/10 overflow-hidden bg-slate-100">
-                      <div className="absolute inset-0 bg-linear-to-t from-primary/80 via-primary/10 to-transparent z-10 transition-opacity duration-500 opacity-50 group-hover:opacity-70"></div>
-
+                <Link href={`/services/${service.slug}`} className="group block h-full outline-none">
+                  <div className="h-full bg-white rounded-[20px] md:rounded-[24px] border border-slate-100 shadow-[0_4px_24px_rgba(0,0,0,0.02)] transition-all duration-500 flex flex-col overflow-hidden hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1">
+                    
+                    {/* Image Area (Dominant Hero) */}
+                    <div className="relative w-full aspect-video overflow-hidden bg-slate-50">
                       <Image
                         src={service.image}
                         alt={service.altText || service.title}
                         fill
-                        className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                        quality={75}
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                        sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 33vw"
                         priority={idx < 2}
                       />
-
-                      {/* Floating Icon overlapping image and content */}
-                      <div className="absolute -bottom-1.5 left-3 z-20">
-                        <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center shadow-md border border-slate-50 transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-0.5 ${service.isHighlighted ? 'bg-primary text-white' : 'bg-white text-primary'
-                          }`}>
-                          <service.icon className="w-4 h-4" strokeWidth={1.5} />
-                        </div>
-                      </div>
+                      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/5 to-transparent opacity-40" />
                     </div>
 
-                    {/* Text Content */}
-                    <div className="p-5 sm:p-6 flex flex-col h-full bg-white relative z-10 transition-colors duration-500 overflow-hidden">
-                      {/* Artistic Numeric Marker (Subtle background) */}
-                      <span className="absolute -top-3 -right-1 text-6xl font-black text-slate-50/50 select-none pointer-events-none group-hover:text-primary/5 transition-colors duration-500">
-                        0{idx + 1}
+                    {/* Content Area (Generous Spacing) */}
+                    <div className="p-4 sm:p-6 md:p-8 flex flex-col grow">
+                      
+                      {/* Category Label (Small + Subtle) */}
+                      <span className="text-[8px] sm:text-[10px] lg:text-xs font-bold tracking-[0.2em] uppercase text-slate-400 mb-2 sm:mb-3">
+                        Specialist Care
                       </span>
 
-                      <div className="flex items-center gap-2 mb-2">
-                        <div className="h-px w-3 bg-primary/20" />
-                        <span className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">
-                          Specialist Care
-                        </span>
-                      </div>
-
-                      <h3 className="text-base sm:text-lg font-bold text-text-dark group-hover:text-primary transition-colors duration-300 leading-tight mb-4">
+                      {/* Title (Primary Focus) */}
+                      <h3 className="text-sm sm:text-2xl lg:text-3xl font-semibold text-slate-900 tracking-tight leading-tight mb-3 sm:mb-6 group-hover:text-primary transition-colors duration-300">
                         {service.title}
                       </h3>
 
-                      {/* Scannable High-Value Benefits */}
-                      <div className="flex flex-wrap gap-x-3 gap-y-1.5 mb-auto">
+                      {/* Benefit Stack (Outcome-Driven) */}
+                      <ul className="space-y-1.5 sm:space-y-3 mb-4 sm:mb-8">
                         {(service.benefits || []).slice(0, 3).map((benefit, bIdx) => (
-                          <div key={bIdx} className="flex items-center gap-1.5 min-w-fit">
-                            <div className="w-1 h-1 rounded-full bg-primary/20" />
-                            <span className="text-[10px] font-medium text-slate-500 whitespace-nowrap">
-                              {truncateText(benefit)}
-                            </span>
-                          </div>
+                          <li key={bIdx} className="flex items-start gap-1.5 sm:gap-2.5 text-[10px] sm:text-sm text-slate-600 leading-snug">
+                            <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-primary/40 mt-1.5 shrink-0" />
+                            {benefit}
+                          </li>
                         ))}
-                      </div>
+                      </ul>
 
-                      {/* Action Link - Professional & Minimal */}
-                      <div className="mt-5 flex items-center justify-between pt-3 border-t border-slate-50">
-                        <div className="inline-flex items-center gap-2.5 text-primary font-bold text-[10px] uppercase tracking-[0.12em] transition-all duration-300 group-hover:gap-4">
-                          <span className="relative text-[11px]">
-                            Details
-                            <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full"></span>
-                          </span>
-                          <div className="w-6 h-px bg-primary/20 transition-all duration-300 group-hover:w-10 group-hover:bg-primary" />
+                      <div className="mt-auto">
+                        {/* Micro Trust Line */}
+                        <p className="text-[11px] text-slate-500 mb-5 font-medium">
+                          Performed by board-certified specialists
+                        </p>
+
+                        {/* CTA (Minimal Apple-Style) */}
+                        <div className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-all duration-300 group-hover:gap-2.5">
+                          View Treatment
+                          <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
+                          <div className="absolute -bottom-0.5 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full opacity-0 group-hover:opacity-100" />
                         </div>
-                        
-                        {service.isHighlighted && (
-                          <div className="flex items-center gap-1.5 text-emerald-600/70">
-                            <Star className="w-2.5 h-2.5 fill-current" />
-                            <span className="text-[8px] font-bold tracking-tighter">
-                              ELITE
-                            </span>
-                          </div>
-                        )}
                       </div>
                     </div>
-
                   </div>
                 </Link>
               </ScrollReveal>
